@@ -1,0 +1,239 @@
+/// One row per sales line: a store's order of one item on one day.
+table Sales
+	lineageTag: 434e29b4-191f-53df-8733-35c814008d4e
+
+	/// What licensed stores paid the state (bottles x the state's retail price).
+	measure Sales = SUM ( 'Sales'[Sale Dollars] )
+		formatString: \$#,##0
+		displayFolder: Sales
+		lineageTag: 62bcefe6-b9e4-554a-95d1-2ede99ac0cba
+
+	measure 'Bottles sold' = SUM ( 'Sales'[Bottles] )
+		formatString: #,##0
+		displayFolder: Sales
+		lineageTag: f8bc5e58-df1f-5085-972f-b15982f23e3a
+
+	measure 'Liters sold' = SUM ( 'Sales'[Liters] )
+		formatString: #,##0
+		displayFolder: Sales
+		lineageTag: 20fc6da4-5350-518c-854c-64968b62fa9c
+
+	/// The state's markup: sales minus what the state paid the vendors.
+	measure 'Gross margin' = SUM ( 'Sales'[Gross Margin Dollars] )
+		formatString: \$#,##0
+		displayFolder: Margin
+		lineageTag: 570a8b75-5e5c-570c-945f-d6d4df6296f0
+
+	measure 'Gross margin %' = DIVIDE ( [Gross margin], [Sales] )
+		formatString: 0.0%
+		displayFolder: Margin
+		lineageTag: e8c16321-6cb7-5091-892f-1fc8db1ac971
+
+	measure 'Avg price per liter' = DIVIDE ( [Sales], [Liters sold] )
+		formatString: \$#,##0.00
+		displayFolder: Sales
+		lineageTag: 6e60e082-8d44-551b-87bf-5f0b1d97116c
+
+	measure 'Avg price per bottle' = DIVIDE ( [Sales], [Bottles sold] )
+		formatString: \$#,##0.00
+		displayFolder: Sales
+		lineageTag: 963b254e-5261-5e77-bcbb-52075a528110
+
+	/// Sales in the same dates one year earlier, limited to dates that already have data, so a year in progress is compared like for like.
+	measure 'Sales PY' =
+			VAR LastSale = CALCULATE ( MAX ( 'Sales'[Date] ), REMOVEFILTERS ( ) )
+			VAR DatesWithData = FILTER ( VALUES ( 'Date'[Date] ), 'Date'[Date] <= LastSale )
+			RETURN
+			    IF (
+			        NOT ISEMPTY ( DatesWithData ),
+			        CALCULATE ( [Sales], SAMEPERIODLASTYEAR ( DatesWithData ) )
+			    )
+		formatString: \$#,##0
+		displayFolder: Time intelligence
+		lineageTag: adc447d6-6088-5a8a-9a97-cd99cd550d7b
+
+	/// Change against the same period one year earlier.
+	measure 'Sales YoY %' = DIVIDE ( [Sales] - [Sales PY], [Sales PY] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Time intelligence
+		lineageTag: a4075f12-a15a-55d7-adb3-f6343f2e3e4f
+
+	measure 'Sales YTD' = TOTALYTD ( [Sales], 'Date'[Date] )
+		formatString: \$#,##0
+		displayFolder: Time intelligence
+		lineageTag: da867076-6b8f-52be-b24f-4a4e9cad5770
+
+	measure 'Sales YTD PY' = CALCULATE ( [Sales PY], DATESYTD ( 'Date'[Date] ) )
+		formatString: \$#,##0
+		displayFolder: Time intelligence
+		lineageTag: b89bb8de-dfac-5745-9e2f-3d25e38872e7
+
+	measure 'Category share' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( 'Category' ) ) )
+		formatString: 0.0%
+		displayFolder: Share
+		lineageTag: 069ffa8b-c35d-5622-8528-c08aafb4a08a
+
+	measure 'Vendor share' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( 'Vendor' ) ) )
+		formatString: 0.0%
+		displayFolder: Share
+		lineageTag: d14d1093-a849-57c4-8936-4180808f16ef
+
+	measure 'Active stores' = DISTINCTCOUNT ( 'Sales'[Store Key] )
+		formatString: #,##0
+		displayFolder: Stores
+		lineageTag: fd7a96b1-2d58-5cbc-aba0-1d10c8ecb9d0
+
+	measure 'Sales per store' = DIVIDE ( [Sales], [Active stores] )
+		formatString: \$#,##0
+		displayFolder: Stores
+		lineageTag: fcc8ed27-090b-5a7b-83f8-24018f01e1c7
+
+	/// Rank by sales among the stores in the current selection (ALLSELECTED over the whole store table, so it works whichever store columns a visual shows).
+	measure 'Store rank' =
+			IF (
+			    HASONEVALUE ( 'Store'[Store Number] ),
+			    RANKX ( ALLSELECTED ( 'Store' ), [Sales] )
+			)
+		formatString: #,##0
+		displayFolder: Stores
+		lineageTag: 4ad35aad-e8e2-5e27-92e0-8ef7aca5b98b
+
+	/// Sales divided by the latest county population (another state dataset).
+	measure 'Sales per resident' = DIVIDE ( [Sales], SUM ( 'County'[Population] ) )
+		formatString: \$#,##0.00
+		displayFolder: Stores
+		lineageTag: 63cbfba2-a5d5-54d3-8a16-f5f967032e00
+
+	measure 'Latest sale date' = MAX ( 'Sales'[Date] )
+		formatString: yyyy-mm-dd
+		displayFolder: Data
+		lineageTag: 119c703f-a3fe-5cb3-af55-a0f7167d81d5
+
+	measure 'Sales lines' = COUNTROWS ( 'Sales' )
+		formatString: #,##0
+		displayFolder: Data
+		lineageTag: f2c17cc7-d6e1-5054-b055-4081ac435a64
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: c8dbb2cf-6ee1-547b-b77e-2c58e6fad111
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Store Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 16400276-d024-50ec-97fc-841779c5bfd3
+		summarizeBy: none
+		sourceColumn: store_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 02cfb6cc-d9b8-57ff-92b8-19eaa87439d5
+		summarizeBy: none
+		sourceColumn: item_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vendor Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 491fbce3-643c-5dfa-b12f-f377a15bcf9c
+		summarizeBy: none
+		sourceColumn: vendor_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 11f2aeaf-be17-52e0-80ab-09d40a90f657
+		summarizeBy: none
+		sourceColumn: category_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'County Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 52124541-f370-5791-be68-51267877df70
+		summarizeBy: none
+		sourceColumn: county_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Bottles
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: 48909464-1df7-5d2b-818e-0753f2131a71
+		summarizeBy: none
+		sourceColumn: bottles_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Dollars'
+		dataType: decimal
+		isHidden
+		formatString: \$#,##0.00
+		lineageTag: d1bbc17c-9438-5061-9735-49a22a86afda
+		summarizeBy: none
+		sourceColumn: sale_dollars
+
+		annotation SummarizationSetBy = Automatic
+
+	column Liters
+		dataType: decimal
+		isHidden
+		formatString: #,##0.00
+		lineageTag: 518e8085-1a69-5aed-8dca-858d302c5556
+		summarizeBy: none
+		sourceColumn: volume_liters
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Cost'
+		dataType: decimal
+		isHidden
+		formatString: \$#,##0.00
+		lineageTag: 1bc6e45c-2207-5cc7-aafc-5ac519494127
+		summarizeBy: none
+		sourceColumn: state_cost_dollars
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gross Margin Dollars'
+		dataType: decimal
+		isHidden
+		formatString: \$#,##0.00
+		lineageTag: a0afc5ec-43aa-583b-8449-fab069dc80e3
+		summarizeBy: none
+		sourceColumn: gross_margin_dollars
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "fact_sales"]}[Data],
+				    Columns = Table.SelectColumns(View, {"calendar_date", "store_key", "item_key", "vendor_key", "category_key", "county_key", "bottles_sold", "sale_dollars", "volume_liters", "state_cost_dollars", "gross_margin_dollars"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

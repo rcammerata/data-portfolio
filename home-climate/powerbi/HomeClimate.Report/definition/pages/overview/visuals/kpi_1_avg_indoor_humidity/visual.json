@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "kpi_1_avg_indoor_humidity",
+  "position": {
+    "x": 24.0,
+    "y": 116,
+    "z": 3000,
+    "height": 104,
+    "width": 296.0,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Climate"
+                    }
+                  },
+                  "Property": "Avg indoor humidity"
+                }
+              },
+              "queryRef": "Climate.Avg indoor humidity",
+              "nativeQueryRef": "Avg indoor humidity"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Avg indoor humidity (number)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

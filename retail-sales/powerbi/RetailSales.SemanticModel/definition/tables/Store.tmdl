@@ -1,0 +1,124 @@
+/// Licensed stores (type 1: latest name and address).
+table Store
+	lineageTag: 7b7e4dd0-ddf0-526b-b1bf-448b11c94f98
+
+	column 'Store Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 2628bcc1-f9bd-59df-bded-c45600f179f1
+		summarizeBy: none
+		sourceColumn: store_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Store Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 24503367-c236-5db6-931c-21003955f9dd
+		summarizeBy: none
+		sourceColumn: store_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Store Name'
+		dataType: string
+		lineageTag: dc467d75-f7b3-53b8-b33d-c1426d88b70e
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Store name with its city.
+	column Store
+		dataType: string
+		lineageTag: 731cc1d0-df59-58ca-a189-1849f4955c9d
+		summarizeBy: none
+		sourceColumn: store_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column Address
+		dataType: string
+		lineageTag: 77a65f20-7495-5424-8db8-924e13c1e28a
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 54f66b3b-4cd4-5ac2-b6ce-e20673716fc8
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ZIP Code'
+		dataType: string
+		lineageTag: e408c1a0-be19-5990-89eb-06226aee67fd
+		summarizeBy: none
+		sourceColumn: zip_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column County
+		dataType: string
+		lineageTag: d5944f48-4407-58be-92c9-6bbeafa13c20
+		summarizeBy: none
+		sourceColumn: county_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		formatString: 0.000000
+		lineageTag: 20e9eb48-4040-54cc-9d68-2fcc1a496013
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		formatString: 0.000000
+		lineageTag: b04efff1-1a74-5b55-bf5a-cec5946022bd
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Sale'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 6b63ecd1-0fee-5bfb-b256-428c58690a73
+		summarizeBy: none
+		sourceColumn: first_sale_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Last Sale'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 133bd4a3-63ce-56ed-82cf-26431926ff7b
+		summarizeBy: none
+		sourceColumn: last_sale_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Store = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_store"]}[Data],
+				    Columns = Table.SelectColumns(View, {"store_key", "store_number", "store_name", "store_label", "address", "city", "zip_code", "county_name", "latitude", "longitude", "first_sale_date", "last_sale_date"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

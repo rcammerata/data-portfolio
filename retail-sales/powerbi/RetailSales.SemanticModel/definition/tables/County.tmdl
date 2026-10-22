@@ -1,0 +1,53 @@
+/// Iowa's 99 counties with their latest population.
+table County
+	lineageTag: 82d57ae2-a815-559b-b01c-282461cd1186
+
+	column 'County Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 8bd3f796-767a-5b08-b012-d81274140a44
+		summarizeBy: none
+		sourceColumn: county_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column County
+		dataType: string
+		lineageTag: 3482fc84-5620-5ead-9de7-11a3824987de
+		summarizeBy: none
+		sourceColumn: county_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Population
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: 00981d33-2dde-5bb8-9358-2f57412208e8
+		summarizeBy: none
+		sourceColumn: population
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Population Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: d4f153f6-757b-5cd8-ae03-70d1909d6879
+		summarizeBy: none
+		sourceColumn: population_year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition County = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_county"]}[Data],
+				    Columns = Table.SelectColumns(View, {"county_key", "county_name", "population", "population_year"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

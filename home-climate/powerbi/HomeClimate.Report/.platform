@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "HomeClimate"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "49e08c01-5a3b-5f94-9940-e4bd80709ef1"
+  }
+}

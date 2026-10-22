@@ -1,0 +1,271 @@
+/// One row per 5-minute bucket: time-weighted sensor averages and what the dehumidifier did.
+table Climate
+	lineageTag: 08cdf598-0fb8-58ee-b017-a8322e02fb1c
+
+	/// Average relative humidity in the room (each 5-minute bucket is already time-weighted).
+	measure 'Avg indoor humidity' = AVERAGE ( 'Climate'[Indoor Humidity] )
+		formatString: 0.0"%"
+		displayFolder: Humidity
+		lineageTag: c09c13d7-3624-5a17-986f-eabb7e147281
+
+	/// The automation's upper humidity target.
+	measure 'Target max' = AVERAGE ( 'Climate'[Target Max] )
+		formatString: 0.0"%"
+		displayFolder: Humidity
+		lineageTag: 5d736fc9-3569-5a2d-81b9-45bd391d8e77
+
+	/// Rolling average over the 7 days ending on each date (blank on days without data).
+	measure 'Indoor humidity, 7-day avg' =
+			VAR LastDay = MAX ( 'Date'[Date] )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( [Avg indoor humidity] ),
+			        CALCULATE ( [Avg indoor humidity], DATESINPERIOD ( 'Date'[Date], LastDay, -7, DAY ) )
+			    )
+		formatString: 0.0"%"
+		displayFolder: Humidity
+		lineageTag: 6e9c1168-1366-583c-aa1b-f808406ef1cd
+
+	/// Share of measured time the room was at or below the target maximum.
+	measure 'Time at or below target' = DIVIDE ( SUM ( 'Climate'[At or Below Target] ), COUNT ( 'Climate'[At or Below Target] ) )
+		formatString: 0.0%
+		displayFolder: Humidity
+		lineageTag: 17ab90d6-d54d-5df8-9348-7c60636b53ea
+
+	measure 'Hours above target' = DIVIDE ( CALCULATE ( COUNTROWS ( 'Climate' ), 'Climate'[At or Below Target] = 0 ) * 5, 60 )
+		formatString: #,##0.0
+		displayFolder: Humidity
+		lineageTag: 6f86a768-ec7b-5199-8f77-4f993e89c36b
+
+	measure 'Avg indoor temp' = AVERAGE ( 'Climate'[Indoor Temp (F)] )
+		formatString: 0.0"°F"
+		displayFolder: Weather
+		lineageTag: 80987d83-4a30-5f33-afad-5143fdd28770
+
+	measure 'Avg outdoor temp' = AVERAGE ( 'Climate'[Outdoor Temp (F)] )
+		formatString: 0.0"°F"
+		displayFolder: Weather
+		lineageTag: b8020b04-19bf-5680-983f-87f082c9c6b2
+
+	/// Moisture in the outdoor air; the automation uses it to pick Max, Min or Off.
+	measure 'Avg outdoor absolute humidity' = AVERAGE ( 'Climate'[Outdoor Abs Humidity] )
+		formatString: 0.0" g/m³"
+		displayFolder: Weather
+		lineageTag: 942a2472-d71e-57c2-a1c5-422aa5e8a259
+
+	measure 'Runtime hours' = DIVIDE ( SUM ( 'Climate'[Minutes On] ), 60 )
+		formatString: #,##0.0
+		displayFolder: Dehumidifier
+		lineageTag: 226bbd67-952e-5226-97d5-9ba306ad9bee
+
+	measure 'Runtime minutes' = SUM ( 'Climate'[Minutes On] )
+		formatString: #,##0
+		displayFolder: Dehumidifier
+		lineageTag: e2835f7e-862e-519e-b827-d9ab911f5bac
+
+	measure 'Runtime hours per day' = DIVIDE ( [Runtime hours], DISTINCTCOUNT ( 'Climate'[Date] ) )
+		formatString: #,##0.0
+		displayFolder: Dehumidifier
+		lineageTag: 193aea5b-73be-5cc4-8395-8b3755cecb69
+
+	/// Runtime x the assumed power draw (a setting in the database); an estimate, not a meter reading.
+	measure 'Estimated energy (kWh)' = SUM ( 'Climate'[Est kWh] )
+		formatString: #,##0.0
+		displayFolder: Dehumidifier
+		lineageTag: e0061a14-94cf-560b-9f65-c5fb5b828b71
+
+	/// Estimated energy x the average electricity price setting.
+	measure 'Estimated cost' = SUM ( 'Climate'[Est Cost USD] )
+		formatString: \$#,##0.00
+		displayFolder: Dehumidifier
+		lineageTag: 8c9992dc-57d9-57de-ae15-6713f12a54ca
+
+	measure 'Latest reading' = MAX ( 'Climate'[Time (Local)] )
+		formatString: yyyy-mm-dd hh:nn
+		displayFolder: Data
+		lineageTag: 59b87d94-8c33-5d2c-8c5f-57ce7fd37c0d
+
+	column 'Time (UTC)'
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: 4c040b9c-8e82-5533-9ab7-3a75638ade27
+		summarizeBy: none
+		sourceColumn: bucket_start_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Start of the 5-minute bucket in local time.
+	column 'Time (Local)'
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: a68bae42-41a8-5ccc-a332-de6863368b5c
+		summarizeBy: none
+		sourceColumn: bucket_start_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: 5c613337-6b69-5953-afaf-6179a36ded8e
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Time Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 37062e20-0027-5486-9d79-e4c8e4cc8b63
+		summarizeBy: none
+		sourceColumn: time_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Indoor Humidity'
+		dataType: double
+		isHidden
+		formatString: 0.0"%"
+		lineageTag: 83af41e0-c633-5965-9533-cb6947786102
+		summarizeBy: none
+		sourceColumn: indoor_humidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Indoor Temp (F)'
+		dataType: double
+		isHidden
+		formatString: 0.0"°F"
+		lineageTag: 054ef44e-70f3-546a-abeb-c16dd9afeaea
+		summarizeBy: none
+		sourceColumn: indoor_temp_f
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Outdoor Temp (F)'
+		dataType: double
+		isHidden
+		formatString: 0.0"°F"
+		lineageTag: 3e12cfac-6efc-5fd4-9320-e5a653a53a35
+		summarizeBy: none
+		sourceColumn: outdoor_temp_f
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Outdoor Humidity'
+		dataType: double
+		isHidden
+		formatString: 0.0"%"
+		lineageTag: 08545762-e3a4-57f1-b268-82cc310e20a8
+		summarizeBy: none
+		sourceColumn: outdoor_humidity
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Grams of water per cubic meter of outdoor air.
+	column 'Outdoor Abs Humidity'
+		dataType: double
+		isHidden
+		formatString: 0.0" g/m³"
+		lineageTag: d89cf559-92ea-588c-b00a-b64e305669b6
+		summarizeBy: none
+		sourceColumn: outdoor_abs_humidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dehumidifier Humidity'
+		dataType: double
+		isHidden
+		formatString: 0.0"%"
+		lineageTag: 4db94f53-d8c5-5378-991d-639dd8abbd95
+		summarizeBy: none
+		sourceColumn: dehumidifier_humidity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Min'
+		dataType: double
+		isHidden
+		formatString: 0.0"%"
+		lineageTag: 53f8831f-138f-56af-9a97-fdba7f73c8b6
+		summarizeBy: none
+		sourceColumn: target_low
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Target Max'
+		dataType: double
+		isHidden
+		formatString: 0.0"%"
+		lineageTag: 4bf7ded2-6ac0-5bd6-8495-fcb18673b058
+		summarizeBy: none
+		sourceColumn: target_high
+
+		annotation SummarizationSetBy = Automatic
+
+	/// 1 when indoor humidity was at or below the target maximum, 0 when above.
+	column 'At or Below Target'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c981483b-ea27-55c7-bd6a-126e1b1abf8d
+		summarizeBy: none
+		sourceColumn: at_or_below_target
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Minutes On'
+		dataType: double
+		isHidden
+		formatString: 0.0
+		lineageTag: c0bec400-682c-5cd9-ab3b-5a33b3273cb1
+		summarizeBy: none
+		sourceColumn: minutes_on
+
+		annotation SummarizationSetBy = Automatic
+
+	/// What the automation chose for this bucket: Max, Min or Off.
+	column Decision
+		dataType: string
+		lineageTag: 3980beb4-61da-506f-a89c-5bef2b101e32
+		summarizeBy: none
+		sourceColumn: decision_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Est kWh'
+		dataType: double
+		isHidden
+		formatString: 0.000
+		lineageTag: 28e54869-4ba5-51bf-9249-d8bb7d355e2a
+		summarizeBy: none
+		sourceColumn: est_kwh
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Est Cost USD'
+		dataType: double
+		isHidden
+		formatString: \$0.0000
+		lineageTag: 6ca29c93-ed5e-520c-8f8f-475104a54506
+		summarizeBy: none
+		sourceColumn: est_cost_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Climate = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "fact_climate_5min"]}[Data],
+				    Columns = Table.SelectColumns(View, {"bucket_start_utc", "bucket_start_local", "calendar_date", "time_key", "indoor_humidity", "indoor_temp_f", "outdoor_temp_f", "outdoor_humidity", "outdoor_abs_humidity", "dehumidifier_humidity", "target_low", "target_high", "at_or_below_target", "minutes_on", "decision_mode", "est_kwh", "est_cost_usd"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

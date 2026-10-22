@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Retail sales analytics</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header class="site"><nav><a href="index.html">Portfolio</a><a href="climate.html">Home climate</a><a href="retail.html">Retail sales</a><a href="https://github.com/rcammerata/data-portfolio">Code on GitHub</a></nav></header>
+
+<h1>Retail sales analytics</h1>
+<p class="lead">Every liquor sale from Iowa's state wholesaler to licensed stores,  to :
+which categories grow, who supplies them, and which stores sell the most.</p>
+<div class="cards"><div class="card"><div class="k">Sales, last 12 months</div><div class="v">–</div></div><div class="card"><div class="k">Change vs the 12 before</div><div class="v">–</div></div><div class="card"><div class="k">Active stores</div><div class="v">–</div></div><div class="card"><div class="k">Sales lines loaded</div><div class="v">–</div></div></div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Monthly sales by category group (top 5, US dollars)" class="chart">
+<title>Monthly sales by category group (top 5, US dollars)</title>
+<text x="56" y="20" class="chart-title">Monthly sales by category group (top 5, US dollars)</text>
+<line x1="56" x2="744" y1="260.0" y2="260.0" class="grid"/>
+<text x="48" y="264.0" class="axis" text-anchor="end">0.0</text>
+<line x1="56" x2="744" y1="184.7" y2="184.7" class="grid"/>
+<text x="48" y="188.7" class="axis" text-anchor="end">0.5</text>
+<line x1="56" x2="744" y1="109.3" y2="109.3" class="grid"/>
+<text x="48" y="113.3" class="axis" text-anchor="end">1.0</text>
+<line x1="56" x2="744" y1="34.0" y2="34.0" class="grid"/>
+<text x="48" y="38.0" class="axis" text-anchor="end">1.5</text>
+<line x1="56" x2="744" y1="260.0" y2="260.0" class="baseline"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 72" role="img" aria-label="Top vendors, last 12 months (sales)" class="chart">
+<title>Top vendors, last 12 months (sales)</title>
+<text x="12" y="20" class="chart-title">Top vendors, last 12 months (sales)</text>
+<line x1="230" x2="230" y1="34" y2="60" class="baseline"/>
+</svg>
+<table><thead><tr><th>#</th><th>Vendor</th><th>Sales (12 months)</th><th>Share</th></tr></thead><tbody></tbody></table>
+
+<h2>Data</h2>
+<p>Source: <a href="https://data.iowa.gov/d/m3tr-qhgy">Iowa Liquor Sales</a>, State of Iowa (public domain, CC0).
+Monthly summaries: <a href="data/retail_monthly.csv">retail_monthly.csv</a> ·
+<a href="data/retail_top_vendors.csv">retail_top_vendors.csv</a></p>
+
+<footer>rcammerata · data analysis portfolio · updated October 22, 2026 · no cookies, no tracking</footer>
+</main>
+</body>
+</html>

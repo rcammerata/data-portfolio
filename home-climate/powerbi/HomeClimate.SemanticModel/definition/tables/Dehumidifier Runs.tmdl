@@ -1,0 +1,122 @@
+/// One row per dehumidifier run (gaps and islands over its on/off history).
+table 'Dehumidifier Runs'
+	lineageTag: 701ae342-e464-5791-bb63-6ce36970447d
+
+	measure Runs = COUNTROWS ( 'Dehumidifier Runs' )
+		formatString: #,##0
+		displayFolder: Dehumidifier
+		lineageTag: ff69fb82-3828-5146-b4d2-f2b9d192243b
+
+	measure 'Avg run length (min)' = AVERAGE ( 'Dehumidifier Runs'[Minutes On] )
+		formatString: #,##0
+		displayFolder: Dehumidifier
+		lineageTag: 215d7078-f87a-5f14-bb92-e443a28fc0df
+
+	/// Percentage points of relative humidity removed per run.
+	measure 'Avg humidity drop per run' = AVERAGE ( 'Dehumidifier Runs'[Humidity Drop] )
+		formatString: 0.0" pts"
+		displayFolder: Dehumidifier
+		lineageTag: c4f42ffa-8709-55d5-a155-089bac8735e9
+
+	column Start
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: b7ad44b9-400b-5e3e-b297-6f9334a44845
+		summarizeBy: none
+		sourceColumn: start_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column End
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: 7685b314-30f8-5660-a948-ddd121f0ffa8
+		summarizeBy: none
+		sourceColumn: end_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: 5194f227-a3b3-57cc-af1f-cc9587a37d10
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Minutes On'
+		dataType: double
+		formatString: #,##0
+		lineageTag: 6f930fb2-10ee-5f2d-8f93-e08c35a3582e
+		summarizeBy: none
+		sourceColumn: minutes_on
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Mode'
+		dataType: string
+		lineageTag: e73cfed3-4ddc-55e2-92f3-91a8a341c4ea
+		summarizeBy: none
+		sourceColumn: device_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decision
+		dataType: string
+		lineageTag: 8f35c0a1-9b6a-58f5-9fd1-60f619a11aad
+		summarizeBy: none
+		sourceColumn: decision_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Humidity at Start'
+		dataType: double
+		formatString: 0.0"%"
+		lineageTag: 77e7431c-8331-5708-a747-564481406da9
+		summarizeBy: none
+		sourceColumn: humidity_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Humidity at End'
+		dataType: double
+		formatString: 0.0"%"
+		lineageTag: 98d113d4-df16-543c-8fcd-5e7edc1ee755
+		summarizeBy: none
+		sourceColumn: humidity_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Humidity Drop'
+		dataType: double
+		formatString: 0.0
+		lineageTag: 2aa195b3-370f-5ab5-b717-bf9f76fcae53
+		summarizeBy: none
+		sourceColumn: humidity_drop
+
+		annotation SummarizationSetBy = Automatic
+
+	/// False while the run is still going.
+	column Complete
+		dataType: boolean
+		lineageTag: ac23b3d2-87b9-5a82-96d4-2cdb4f37ee27
+		summarizeBy: none
+		sourceColumn: is_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dehumidifier Runs' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "fact_dehumidifier_session"]}[Data],
+				    Columns = Table.SelectColumns(View, {"start_local", "end_local", "calendar_date", "minutes_on", "device_mode", "decision_mode", "humidity_start", "humidity_end", "humidity_drop", "is_complete"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

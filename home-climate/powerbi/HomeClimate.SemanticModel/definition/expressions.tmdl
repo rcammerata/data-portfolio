@@ -1,0 +1,11 @@
+/// The SQL Server on the home server (its certificate names this host).
+expression SqlServer = "homebase.home.arpa" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: b6e55e28-7864-56fb-972e-e41ecb8da476
+
+	annotation PBI_ResultType = Text
+
+/// The database this report reads.
+expression SqlDatabase = "HomeClimate" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: fc04c390-af0c-506a-886e-09765a4533e7
+
+	annotation PBI_ResultType = Text

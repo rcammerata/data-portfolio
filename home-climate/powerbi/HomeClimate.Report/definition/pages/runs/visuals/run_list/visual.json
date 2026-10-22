@@ -1,0 +1,189 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "run_list",
+  "position": {
+    "x": 24,
+    "y": 236,
+    "z": 7000,
+    "height": 460,
+    "width": 760,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Start"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Start",
+              "nativeQueryRef": "Start"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "End"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.End",
+              "nativeQueryRef": "End"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Minutes On"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Minutes On",
+              "nativeQueryRef": "Minutes On"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Decision"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Decision",
+              "nativeQueryRef": "Decision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Device Mode"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Device Mode",
+              "nativeQueryRef": "Device Mode"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Humidity at Start"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Humidity at Start",
+              "nativeQueryRef": "Humidity at Start"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Humidity at End"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Humidity at End",
+              "nativeQueryRef": "Humidity at End"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dehumidifier Runs"
+                    }
+                  },
+                  "Property": "Humidity Drop"
+                }
+              },
+              "queryRef": "Dehumidifier Runs.Humidity Drop",
+              "nativeQueryRef": "Humidity Drop"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dehumidifier Runs"
+                  }
+                },
+                "Property": "Start"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Runs (newest first)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Table of dehumidifier runs with start, end, minutes, mode and humidity change'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

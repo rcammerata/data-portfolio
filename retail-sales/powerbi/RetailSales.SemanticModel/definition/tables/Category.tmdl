@@ -1,0 +1,52 @@
+/// Product categories.
+table Category
+	lineageTag: 661d351a-7ce2-55ea-984d-c6893a3df705
+
+	column 'Category Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 94e9f548-804d-5f9c-b904-0f1e8b6f79e9
+		summarizeBy: none
+		sourceColumn: category_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: dbb1ffbf-4779-53c2-b334-bc1b3cde03d9
+		summarizeBy: none
+		sourceColumn: category_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: bcba0ce9-3f50-570d-a18b-bf8d27023a80
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Categories rolled up into about ten groups (dw.fn_category_group).
+	column 'Category Group'
+		dataType: string
+		lineageTag: 7748da7f-1e7d-5353-aff8-88b3f45f3f5e
+		summarizeBy: none
+		sourceColumn: category_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Category = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_category"]}[Data],
+				    Columns = Table.SelectColumns(View, {"category_key", "category_number", "category_name", "category_group"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

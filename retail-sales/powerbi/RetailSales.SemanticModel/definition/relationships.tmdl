@@ -1,0 +1,23 @@
+relationship d2f53840-ee3f-535b-83a6-3cc1eaa923cc
+	fromColumn: Sales.Date
+	toColumn: Date.Date
+
+relationship 8a7d6486-a557-5bc8-ac6b-858e29d76b9d
+	fromColumn: Sales.'Store Key'
+	toColumn: Store.'Store Key'
+
+relationship a9900834-bac3-50bd-ae16-fb114507a6b3
+	fromColumn: Sales.'Item Key'
+	toColumn: Item.'Item Key'
+
+relationship 596f1e5f-38ea-53ca-927b-19e5b8e16002
+	fromColumn: Sales.'Vendor Key'
+	toColumn: Vendor.'Vendor Key'
+
+relationship 0bec8f3a-1bca-538a-847a-69af405bfb10
+	fromColumn: Sales.'Category Key'
+	toColumn: Category.'Category Key'
+
+relationship 396efb39-0183-51a0-a051-8fec2c51c889
+	fromColumn: Sales.'County Key'
+	toColumn: County.'County Key'

@@ -1,0 +1,4 @@
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix
+.DS_Store

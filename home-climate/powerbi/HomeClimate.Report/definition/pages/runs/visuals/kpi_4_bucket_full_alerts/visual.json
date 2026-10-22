@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "kpi_4_bucket_full_alerts",
+  "position": {
+    "x": 960.0,
+    "y": 116,
+    "z": 6000,
+    "height": 104,
+    "width": 296.0,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Events"
+                    }
+                  },
+                  "Property": "Bucket full alerts"
+                }
+              },
+              "queryRef": "Events.Bucket full alerts",
+              "nativeQueryRef": "Bucket full alerts"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bucket full alerts (number)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,62 @@
+/// Notable moments: bucket full, too hot, mode changes, automation on/off.
+table Events
+	lineageTag: eb5996ea-50b7-5b86-88ad-08aa98200d28
+
+	measure 'Bucket full alerts' = CALCULATE ( COUNTROWS ( 'Events' ), 'Events'[Event] = "Bucket full" )
+		formatString: #,##0
+		displayFolder: Dehumidifier
+		lineageTag: bde29669-e6ca-53d5-b7c2-4cbdb6da7552
+
+	measure 'Event count' = COUNTROWS ( 'Events' )
+		formatString: #,##0
+		displayFolder: Data
+		lineageTag: 34a4aa0e-369f-582f-8604-c41e40f38f37
+
+	column Time
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: c4b4457b-7c2c-56ff-a50d-a05d665d8c12
+		summarizeBy: none
+		sourceColumn: event_local
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: cc27ac93-a8ee-5c63-8b1a-4ce668c66ddb
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Event
+		dataType: string
+		lineageTag: 6efb5bc3-e9c7-5ab9-b688-4ff306205cbe
+		summarizeBy: none
+		sourceColumn: event_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detail
+		dataType: string
+		lineageTag: f8633fb6-033e-50a0-ac68-b901721048cc
+		summarizeBy: none
+		sourceColumn: detail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Events = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "fact_event"]}[Data],
+				    Columns = Table.SelectColumns(View, {"event_local", "calendar_date", "event_name", "detail"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

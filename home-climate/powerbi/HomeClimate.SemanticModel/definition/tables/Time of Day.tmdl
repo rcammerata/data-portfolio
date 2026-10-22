@@ -1,0 +1,70 @@
+/// The 288 five-minute slots of a day.
+table 'Time of Day'
+	lineageTag: 778b5bc4-c973-556f-a65f-12f60248effb
+
+	column 'Time Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 5d9b394b-c8a6-5897-8f8a-1f77791e191c
+		summarizeBy: none
+		sourceColumn: time_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 875f0b96-829d-577c-9c02-277bbfac5487
+		summarizeBy: none
+		sourceColumn: hour_24
+
+		annotation SummarizationSetBy = Automatic
+
+	column Minute
+		dataType: int64
+		formatString: 0
+		lineageTag: e90c1072-6d92-59cd-a47c-e0e1a298a5bd
+		summarizeBy: none
+		sourceColumn: minute_of_hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column Time
+		dataType: string
+		lineageTag: 5dd23cac-0c0e-59ec-a1b2-949ae8cf9b33
+		summarizeBy: none
+		sourceColumn: time_label
+		sortByColumn: 'Time Key'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hour Label'
+		dataType: string
+		lineageTag: 77a15ecb-8f3c-5f50-9a86-886659cd240e
+		summarizeBy: none
+		sourceColumn: hour_label
+		sortByColumn: Hour
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Part of Day'
+		dataType: string
+		lineageTag: 84ce243d-1246-5688-a514-5aa7a90067e4
+		summarizeBy: none
+		sourceColumn: part_of_day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Time of Day' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_time"]}[Data],
+				    Columns = Table.SelectColumns(View, {"time_key", "hour_24", "minute_of_hour", "time_label", "hour_label", "part_of_day"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Data analysis portfolio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header class="site"><nav><a href="index.html">Portfolio</a><a href="climate.html">Home climate</a><a href="retail.html">Retail sales</a><a href="https://github.com/rcammerata/data-portfolio">Code on GitHub</a></nav></header>
+
+<h1>Data analysis portfolio</h1>
+<p class="lead">Two end-to-end projects: data pipelines into SQL Server, a star schema, and Power BI
+reports on top. Everything runs on a small home server and refreshes itself.</p>
+<div class="projects">
+<section class="project">
+<h2 style="margin-top:0"><a href="climate.html">Home climate analytics</a></h2>
+<p>Sensor readings and a dehumidifier's activity, collected every 5 minutes and modelled in SQL
+Server. Did the automation keep the room dry, and what did it cost?</p>
+<p class="note">Collecting data; the first summaries appear after a few days.</p>
+<p class="note">SQL Server · T-SQL (window functions, gaps and islands, JSON) · Python ETL · Power BI · DAX</p>
+</section>
+<section class="project">
+<h2 style="margin-top:0"><a href="retail.html">Retail sales analytics</a></h2>
+<p>Millions of real liquor sales lines published by the State of Iowa, loaded month by month into a
+columnstore star schema: trends, category mix, vendors and stores.</p>
+<p class="note">Loading the state&#x27;s sales data; summaries appear once the first months are in.</p>
+<p class="note">SQL Server · columnstore · incremental loads · data quality checks · Power BI · time intelligence</p>
+</section>
+</div>
+<h2>How it works</h2>
+<p>Loaders written in Python pull new data on a schedule (Home Assistant every 15 minutes, the
+state's open-data API monthly) and hand it to stored procedures that clean it and load a star
+schema in SQL Server 2025. Power BI reads reporting views through a read-only login. Once a day
+the server exports these small public summaries to this page; nothing here can reach back into
+the home network.</p>
+
+<footer>rcammerata · data analysis portfolio · updated October 22, 2026 · no cookies, no tracking</footer>
+</main>
+</body>
+</html>

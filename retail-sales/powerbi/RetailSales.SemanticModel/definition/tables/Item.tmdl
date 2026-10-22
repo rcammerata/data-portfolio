@@ -1,0 +1,77 @@
+/// Products (item number, description, pack and bottle size).
+table Item
+	lineageTag: 2f11fcf7-9d1b-597d-bed5-587c9fc9c979
+
+	column 'Item Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 09780934-e4d4-5c53-a1b0-019152e3662e
+		summarizeBy: none
+		sourceColumn: item_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Number'
+		dataType: string
+		lineageTag: b79be84f-f742-5ab9-a0f5-dda197d6f883
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		lineageTag: 5b73d2b5-92d1-5906-9f62-bf42dae3c990
+		summarizeBy: none
+		sourceColumn: item_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pack
+		dataType: int64
+		formatString: 0
+		lineageTag: 01182ac5-cbbc-5e92-8809-caf7d2dfe582
+		summarizeBy: none
+		sourceColumn: pack
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bottle ml'
+		dataType: int64
+		formatString: #,##0
+		lineageTag: ef9ffea7-9416-5434-9e65-c4cc9fe2c382
+		summarizeBy: none
+		sourceColumn: bottle_volume_ml
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Bottle Size'
+		dataType: string
+		lineageTag: 21f8d1f5-0e79-5d06-879d-76b03247fc4c
+		summarizeBy: none
+		sourceColumn: bottle_size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Bottle Retail'
+		dataType: decimal
+		formatString: \$#,##0.00
+		lineageTag: 66954489-9e3f-5ca5-9fda-972876cd4b88
+		summarizeBy: none
+		sourceColumn: last_bottle_retail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Item = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_item"]}[Data],
+				    Columns = Table.SelectColumns(View, {"item_key", "item_number", "item_description", "pack", "bottle_volume_ml", "bottle_size", "last_bottle_retail"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

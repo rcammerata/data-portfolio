@@ -1,0 +1,176 @@
+/// Calendar from January 1 of the first year of data to the end of this year.
+table Date
+	lineageTag: e1053d6d-3d6b-5190-a4f0-4ac50b27f4c5
+	dataCategory: Time
+
+	column 'Date Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2ab8c813-524d-59e5-aee5-52080d9d810d
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: 1f8d015e-869b-5fa5-ab87-18c10072ed8b
+		summarizeBy: none
+		sourceColumn: calendar_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: fdfa7ff8-9b9f-5c40-8e9b-d52210fa8c4f
+		summarizeBy: none
+		sourceColumn: calendar_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: bf94a45f-f7ec-531c-93c3-284ecd9cc12c
+		summarizeBy: none
+		sourceColumn: quarter_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: df71b75a-917c-56fd-a6d8-2dd36f21b416
+		summarizeBy: none
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 2a4a046d-21b0-5ebf-afcb-48a96ff27eca
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		dataType: string
+		lineageTag: 624d60a1-20c8-5a85-aad4-87e1ef8a070f
+		summarizeBy: none
+		sourceColumn: month_short
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month'
+		dataType: string
+		lineageTag: 78869f7d-3eea-5f72-8795-18b9a350a17f
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Start'
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 6aeb5535-8721-545e-8f30-340f86f3b21c
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Day of Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: 623e1352-1c02-56fb-80d4-86433dfa51c7
+		summarizeBy: none
+		sourceColumn: day_of_month
+
+		annotation SummarizationSetBy = Automatic
+
+	/// 1 = Monday ... 7 = Sunday
+	column 'Weekday Number'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0b89830c-a64c-57f2-815c-21d81daeb4b5
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		dataType: string
+		lineageTag: c8d0fd94-2159-56c4-a7dd-2a1b168d7e3a
+		summarizeBy: none
+		sourceColumn: day_name
+		sortByColumn: 'Weekday Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Weekday Short'
+		dataType: string
+		lineageTag: 61b24fe5-de9d-5dde-af09-3df2d9212fc4
+		summarizeBy: none
+		sourceColumn: day_short
+		sortByColumn: 'Weekday Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekend
+		dataType: boolean
+		lineageTag: 4ad69513-aabb-5824-b500-24b0e680c7a6
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a83f6cd-3f2b-517d-8e28-3219fb3b5964
+		summarizeBy: none
+		sourceColumn: iso_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Start'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 92238185-a104-52f4-a4dd-726edbe78da6
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Season
+		dataType: string
+		lineageTag: 143727e3-06c0-558e-afd5-883cfdac0365
+		summarizeBy: none
+		sourceColumn: season
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_date"]}[Data],
+				    Columns = Table.SelectColumns(View, {"date_key", "calendar_date", "calendar_year", "quarter_label", "month_number", "month_name", "month_short", "year_month", "month_start", "day_of_month", "day_of_week", "day_name", "day_short", "is_weekend", "iso_week", "week_start", "season"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

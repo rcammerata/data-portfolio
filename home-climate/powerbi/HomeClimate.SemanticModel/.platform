@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "HomeClimate"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7bc36716-71fe-5070-80ce-873b0b902db4"
+  }
+}

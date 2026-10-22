@@ -1,0 +1,43 @@
+/// Suppliers.
+table Vendor
+	lineageTag: 6784aa1c-074b-592e-8e9b-e818eb75c503
+
+	column 'Vendor Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: ab33dab7-bf0c-5333-8725-af73fca4572a
+		summarizeBy: none
+		sourceColumn: vendor_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vendor Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 087549ad-a831-5508-9906-1e7e1e8d892a
+		summarizeBy: none
+		sourceColumn: vendor_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor
+		dataType: string
+		lineageTag: b42b7099-fdaa-519f-a69a-e424c149b2a3
+		summarizeBy: none
+		sourceColumn: vendor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Vendor = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServer, SqlDatabase),
+				    View = Source{[Schema = "rpt", Item = "dim_vendor"]}[Data],
+				    Columns = Table.SelectColumns(View, {"vendor_key", "vendor_number", "vendor_name"})
+				in
+				    Columns
+
+	annotation PBI_ResultType = Table

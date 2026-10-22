@@ -1,0 +1,15 @@
+relationship 56b43ec5-e13c-5494-bee4-90d5cec80d78
+	fromColumn: Climate.Date
+	toColumn: Date.Date
+
+relationship 26c8afe6-9dac-5337-913c-4360ecdab978
+	fromColumn: Climate.'Time Key'
+	toColumn: 'Time of Day'.'Time Key'
+
+relationship 623c44e8-a92e-54d1-9734-9ff883d4c207
+	fromColumn: 'Dehumidifier Runs'.Date
+	toColumn: Date.Date
+
+relationship 2fe61674-8b50-507e-b268-0c28bce6c08a
+	fromColumn: Events.Date
+	toColumn: Date.Date
