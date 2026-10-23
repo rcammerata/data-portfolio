@@ -7,20 +7,21 @@ publishes every sale to licensed stores.
 ![Monthly sales by category group](../docs/charts/retail-monthly.svg)
 
 **Last 12 months:** {{retail_sales_12m}} in sales (– vs the 12 months before),
-from 0 sales lines loaded ( to ). Live charts:
+from 3,238,302 sales lines loaded (2023-01 to 2023-12). Live charts:
 https://rcammerata.github.io/data-portfolio/retail.html
 
 ## Data
 
-[Iowa Liquor Sales](https://data.iowa.gov/d/m3tr-qhgy), State of Iowa, public domain (CC0): one
-row per item on each store's order, with store, vendor, category, bottle size, cost and price.
-County population (another state dataset) adds sales per person.
+[Iowa Liquor Sales](https://data.iowa.gov/catalog?q=liquor+sales), State of Iowa, public domain
+(CC0), one dataset per year: one row per item on each store's order, with store, vendor, category,
+bottle size, cost and price. County population (another state dataset) adds sales per person.
 
 ## Pipeline
 
-* A Python loader downloads one month at a time from the open-data API in pages of 50,000 rows,
-  parses and validates each line (dates, numbers, store coordinates from `POINT(...)` text), and
-  sends it to `etl.usp_stage_iowa` in chunks as JSON (`OPENJSON ... WITH` with positional paths).
+* A Python loader downloads each year it needs once (the state's API hands out a whole year as a
+  zip of CSV files), reads it in one pass, and parses and validates each line (dates, numbers;
+  the yearly files number invoices only, so each line gets `<invoice>-<n>`). It sends each month
+  to `etl.usp_stage_iowa` in chunks as JSON (`OPENJSON ... WITH` with positional paths).
 * `etl.usp_load_iowa_month` loads a month in **one transaction**: it checks the staged row count
   against the download, adds and updates the dimensions (type 1, latest attributes win only
   when the month is newer), replaces that month's facts (so reloads are idempotent), removes

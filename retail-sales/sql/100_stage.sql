@@ -1,6 +1,6 @@
 /*
   Retail sales (Iowa liquor sales, public domain): staging.
-  The loader downloads one month at a time from data.iowa.gov and sends it here in chunks;
+  The loader downloads each year's file from data.iowa.gov and sends each month here in chunks;
   etl.usp_load_iowa_month then moves the month into the star schema in one transaction.
 */
 CREATE SCHEMA stg AUTHORIZATION dbo;

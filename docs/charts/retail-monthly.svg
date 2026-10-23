@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Monthly sales by category group (top 5, US dollars)" class="chart">
+<style>.chart{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}.chart-title{font-size:15px;font-weight:600;fill:#0b0b0b}.axis,.legend{font-size:11px;fill:#52514e}.value{font-size:11px;fill:#0b0b0b;font-weight:600}.grid{stroke:#e1e0d9;stroke-width:1}.baseline{stroke:#c3c2b7;stroke-width:1}.line{stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.ref{stroke:#898781}.dot{stroke:#fcfcfb;stroke-width:2}.hit{fill:transparent}.s1{stroke:#2a78d6}.f1{fill:#2a78d6}.s2{stroke:#eb6834}.f2{fill:#eb6834}.s3{stroke:#1baf7a}.f3{fill:#1baf7a}.s4{stroke:#eda100}.f4{fill:#eda100}.s5{stroke:#e87ba4}.f5{fill:#e87ba4}.s6{stroke:#008300}.f6{fill:#008300}.s7{stroke:#6250d6}.f7{fill:#6250d6}.s8{stroke:#e34948}.f8{fill:#e34948}</style><rect width="760" height="300" rx="8" fill="#fcfcfb"/><title>Monthly sales by category group (top 5, US dollars)</title>
+<text x="56" y="20" class="chart-title">Monthly sales by category group (top 5, US dollars)</text>
+<line x1="56" x2="74" y1="36" y2="36" class="s1" stroke-width="2"/>
+<text x="80" y="40" class="legend">Whiskey</text>
+<line x1="141.5" x2="159.5" y1="36" y2="36" class="s2" stroke-width="2"/>
+<text x="165.5" y="40" class="legend">Vodka</text>
+<line x1="214.0" x2="232.0" y1="36" y2="36" class="s3" stroke-width="2"/>
+<text x="238.0" y="40" class="legend">Tequila &amp; Mezcal</text>
+<line x1="358.0" x2="376.0" y1="36" y2="36" class="s4" stroke-width="2"/>
+<text x="382.0" y="40" class="legend">Rum</text>
+<line x1="417.5" x2="435.5" y1="36" y2="36" class="s5" stroke-width="2"/>
+<text x="441.5" y="40" class="legend">Liqueurs &amp; Cordials</text>
+<line x1="56" x2="744" y1="260.0" y2="260.0" class="grid"/>
+<text x="48" y="264.0" class="axis" text-anchor="end">0</text>
+<line x1="56" x2="744" y1="208.5" y2="208.5" class="grid"/>
+<text x="48" y="212.5" class="axis" text-anchor="end">10M</text>
+<line x1="56" x2="744" y1="157.0" y2="157.0" class="grid"/>
+<text x="48" y="161.0" class="axis" text-anchor="end">20M</text>
+<line x1="56" x2="744" y1="105.5" y2="105.5" class="grid"/>
+<text x="48" y="109.5" class="axis" text-anchor="end">30M</text>
+<line x1="56" x2="744" y1="54.0" y2="54.0" class="grid"/>
+<text x="48" y="58.0" class="axis" text-anchor="end">40M</text>
+<line x1="56" x2="744" y1="260.0" y2="260.0" class="baseline"/>
+<text x="56.0" y="278" class="axis" text-anchor="middle">23-01</text>
+<text x="118.5" y="278" class="axis" text-anchor="middle">23-02</text>
+<text x="181.1" y="278" class="axis" text-anchor="middle">23-03</text>
+<text x="243.6" y="278" class="axis" text-anchor="middle">23-04</text>
+<text x="306.2" y="278" class="axis" text-anchor="middle">23-05</text>
+<text x="368.7" y="278" class="axis" text-anchor="middle">23-06</text>
+<text x="431.3" y="278" class="axis" text-anchor="middle">23-07</text>
+<text x="493.8" y="278" class="axis" text-anchor="middle">23-08</text>
+<text x="556.4" y="278" class="axis" text-anchor="middle">23-09</text>
+<text x="618.9" y="278" class="axis" text-anchor="middle">23-10</text>
+<text x="681.5" y="278" class="axis" text-anchor="middle">23-11</text>
+<text x="744.0" y="278" class="axis" text-anchor="middle">23-12</text>
+<polyline points="56.0,194.6 118.5,192.2 181.1,189.6 243.6,196.5 306.2,182.0 368.7,182.1 431.3,187.6 493.8,119.9 556.4,122.1 618.9,107.5 681.5,186.5 744.0,171.0" fill="none" class="s1 line"/>
+<circle cx="744.0" cy="171.0" r="4" class="f1 dot"/>
+<polyline points="56.0,225.3 118.5,224.4 181.1,220.4 243.6,223.1 306.2,213.2 368.7,210.7 431.3,219.5 493.8,165.9 556.4,186.3 618.9,180.6 681.5,217.4 744.0,223.3" fill="none" class="s2 line"/>
+<circle cx="744.0" cy="223.3" r="4" class="f2 dot"/>
+<polyline points="56.0,244.4 118.5,244.0 181.1,244.0 243.6,241.1 306.2,237.9 368.7,237.5 431.3,241.0 493.8,220.9 556.4,223.6 618.9,224.1 681.5,242.8 744.0,238.8" fill="none" class="s3 line"/>
+<circle cx="744.0" cy="238.8" r="4" class="f3 dot"/>
+<polyline points="56.0,245.1 118.5,247.4 181.1,236.8 243.6,246.2 306.2,242.5 368.7,240.5 431.3,243.5 493.8,231.5 556.4,228.3 618.9,232.6 681.5,236.1 744.0,244.9" fill="none" class="s4 line"/>
+<circle cx="744.0" cy="244.9" r="4" class="f4 dot"/>
+<polyline points="56.0,248.3 118.5,250.3 181.1,248.3 243.6,250.3 306.2,248.0 368.7,248.2 431.3,249.2 493.8,239.2 556.4,237.6 618.9,232.9 681.5,245.1 744.0,242.8" fill="none" class="s5 line"/>
+<circle cx="744.0" cy="242.8" r="4" class="f5 dot"/>
+</svg>

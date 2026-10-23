@@ -9,7 +9,7 @@ top. Both refresh themselves on a schedule.
 | Project | Question | Data | Highlights |
 |---|---|---|---|
 | [Home climate analytics](home-climate/) | Does a home automation keep a room dry, and what does it cost? | My own sensors and dehumidifier, every 5 minutes | time-weighted averages, gaps and islands, JSON in T-SQL, DAX |
-| [Retail sales analytics](retail-sales/) | Which liquor categories, vendors and stores drive sales in Iowa? | 0 real sales lines from the State of Iowa ( to ) | incremental monthly loads, clustered columnstore, data quality checks, time intelligence |
+| [Retail sales analytics](retail-sales/) | Which liquor categories, vendors and stores drive sales in Iowa? | 3,238,302 real sales lines from the State of Iowa (2023-01 to 2023-12) | incremental monthly loads, clustered columnstore, data quality checks, time intelligence |
 
 ## How it runs
 
@@ -44,4 +44,4 @@ The Power BI reports are saved as Power BI Projects (`.pbip`): the semantic mode
 TMDL (tables, relationships, DAX measures) and the report is JSON, so every change is reviewable
 in Git.
 
-*Updated October 22, 2026.*
+*Updated October 23, 2026.*
