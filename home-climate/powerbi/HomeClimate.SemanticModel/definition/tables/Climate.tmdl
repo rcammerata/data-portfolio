@@ -9,7 +9,7 @@ table Climate
 		lineageTag: c09c13d7-3624-5a17-986f-eabb7e147281
 
 	/// The automation's upper humidity target.
-	measure 'Target max' = AVERAGE ( 'Climate'[Target Max] )
+	measure 'Target max' = AVERAGE ( 'Climate'[Target High] )
 		formatString: 0.0"%"
 		displayFolder: Humidity
 		lineageTag: 5d736fc9-3569-5a2d-81b9-45bd391d8e77
@@ -188,7 +188,7 @@ table Climate
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Target Min'
+	column 'Target Low'
 		dataType: double
 		isHidden
 		formatString: 0.0"%"
@@ -198,7 +198,7 @@ table Climate
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Target Max'
+	column 'Target High'
 		dataType: double
 		isHidden
 		formatString: 0.0"%"
