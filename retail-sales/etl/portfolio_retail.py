@@ -257,8 +257,10 @@ def http_get(url: str, token: str | None = None, attempts: int = 5, timeout: int
 
 
 def http_download(url: str, dest: Path, attempts: int = 5, timeout: int = 600,
-                  opener: Callable[..., Any] = urllib.request.urlopen, pause: float = 15) -> Path:
-    """Saves a (large) download to dest, starting over if the connection drops."""
+                  opener: Callable[..., Any] = urllib.request.urlopen, pause: float = 15,
+                  complete: Callable[[Path], bool] = lambda _p: True) -> Path:
+    """Saves a (large) download to dest, starting over if the connection drops or the file
+    arrives incomplete (a stream without a length can just stop early, with no error)."""
     last: Exception | None = None
     for i in range(attempts):
         try:
@@ -266,7 +268,9 @@ def http_download(url: str, dest: Path, attempts: int = 5, timeout: int = 600,
             with opener(req, timeout=timeout) as r, open(dest, "wb") as f:
                 while chunk := r.read(1 << 20):
                     f.write(chunk)
-            return dest
+            if complete(dest):
+                return dest
+            last = RuntimeError(f"the download stopped early ({dest.stat().st_size} bytes)")
         except urllib.error.HTTPError as exc:
             last = exc
             if exc.code not in RETRY_CODES:
@@ -289,8 +293,12 @@ def year_dataset(year: int, get: Callable[..., bytes] = http_get) -> int | None:
     return int(m.group(1)) if m else None
 
 
+def download_zip(url: str, dest: Path) -> Path:
+    return http_download(url, dest, complete=zipfile.is_zipfile)
+
+
 def download_year(year: int, get: Callable[..., bytes] = http_get,
-                  fetch: Callable[[str, Path], Path] = http_download) -> Path | None:
+                  fetch: Callable[[str, Path], Path] = download_zip) -> Path | None:
     """Downloads one year's zip to a temporary file (the caller deletes it), or None if the
     year isn't published yet."""
     dataset = year_dataset(year, get)
