@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "humidity_trend",
   "position": {
     "x": 24,
@@ -7,7 +7,7 @@
     "z": 7000,
     "height": 460,
     "width": 760,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "lineChart",
@@ -42,11 +42,12 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Avg indoor humidity"
+                  "Property": "Average Indoor Humidity"
                 }
               },
-              "queryRef": "Climate.Avg indoor humidity",
-              "nativeQueryRef": "Avg indoor humidity"
+              "queryRef": "Climate.Average Indoor Humidity",
+              "nativeQueryRef": "Average Indoor Humidity",
+              "displayName": "Average Indoor Humidity"
             },
             {
               "field": {
@@ -56,11 +57,12 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Indoor humidity, 7-day avg"
+                  "Property": "7-Day Average Indoor Humidity"
                 }
               },
-              "queryRef": "Climate.Indoor humidity, 7-day avg",
-              "nativeQueryRef": "Indoor humidity, 7-day avg"
+              "queryRef": "Climate.7-Day Average Indoor Humidity",
+              "nativeQueryRef": "7-Day Average Indoor Humidity",
+              "displayName": "7-Day Average Indoor Humidity"
             },
             {
               "field": {
@@ -70,11 +72,12 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Target max"
+                  "Property": "Target Max"
                 }
               },
-              "queryRef": "Climate.Target max",
-              "nativeQueryRef": "Target max"
+              "queryRef": "Climate.Target Max",
+              "nativeQueryRef": "Target Max",
+              "displayName": "Target Max"
             }
           ]
         }
@@ -127,7 +130,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 8,
                       "Percent": 0
                     }
                   }
@@ -136,7 +139,7 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Avg indoor humidity"
+            "metadata": "Climate.Average Indoor Humidity"
           }
         },
         {
@@ -146,7 +149,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 1,
+                      "ColorId": 3,
                       "Percent": 0
                     }
                   }
@@ -155,7 +158,7 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Indoor humidity, 7-day avg"
+            "metadata": "Climate.7-Day Average Indoor Humidity"
           }
         },
         {
@@ -164,8 +167,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#898781'"
+                    "ThemeDataColor": {
+                      "ColorId": 5,
+                      "Percent": 0
                     }
                   }
                 }
@@ -173,7 +177,7 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Target max"
+            "metadata": "Climate.Target Max"
           }
         }
       ],
@@ -196,7 +200,38 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Target max"
+            "metadata": "Climate.Target Max"
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
           }
         }
       ]
@@ -215,7 +250,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Indoor humidity vs the automation''s target (daily)'"
+                  "Value": "'Indoor Humidity vs Automation''s Target (Daily)'"
                 }
               }
             }
@@ -237,5 +272,54 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "38655004d866f7db7f97",
+        "displayName": "Average Indoor Humidity",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Climate"
+              }
+            },
+            "Property": "Average Indoor Humidity"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a979bb282b7ce4e045dc",
+        "displayName": "7-Day Average Indoor Humidity",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Climate"
+              }
+            },
+            "Property": "7-Day Average Indoor Humidity"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "88b4a0e9b325dfd6dc17",
+        "displayName": "Target Max",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Climate"
+              }
+            },
+            "Property": "Target Max"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "kpi_1_avg_indoor_humidity",
   "position": {
-    "x": 24.0,
+    "x": 24,
     "y": 116,
     "z": 3000,
     "height": 104,
-    "width": 296.0,
-    "tabOrder": 2
+    "width": 296,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,12 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Avg indoor humidity"
+                  "Property": "Average Indoor Humidity"
                 }
               },
-              "queryRef": "Climate.Avg indoor humidity",
-              "nativeQueryRef": "Avg indoor humidity"
+              "queryRef": "Climate.Average Indoor Humidity",
+              "nativeQueryRef": "Average Indoor Humidity",
+              "displayName": "Average Indoor Humidity"
             }
           ]
         }

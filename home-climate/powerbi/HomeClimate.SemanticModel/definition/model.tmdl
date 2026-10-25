@@ -11,8 +11,13 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["SqlServer","SqlDatabase","Date","Time of Day","Climate","Dehumidifier Runs","Events"]
 
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table Date
 ref table 'Time of Day'
 ref table Climate
 ref table 'Dehumidifier Runs'
 ref table Events
+
+ref cultureInfo en-US
+

@@ -15,6 +15,8 @@ BEGIN
         N'Assumed electricity price: the 2026 U.S. residential average forecast by the EIA.';
     EXEC etl.usp_default_setting 'public_delay_days', N'3',
         N'The public summaries leave out the most recent days.';
+    EXEC etl.usp_default_setting 'indoor_humidity_offset', N'5',
+        N'Points added to the indoor sensor and its target band in the reports (the sensor reads about 5 points low).';
 
     DECLARE @calendar_from nvarchar(200) = CONVERT(nvarchar(10), DATEFROMPARTS(YEAR(SYSUTCDATETIME()), 1, 1), 23);
     EXEC etl.usp_default_setting 'calendar_from', @calendar_from, N'First day of the Power BI calendar.';

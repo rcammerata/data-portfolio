@@ -1,4 +1,4 @@
-/// Calendar from January 1 of the first year of data to the end of this year.
+/// Calendar from the first day with readings through today, so the date range matches the data.
 table Date
 	lineageTag: e1053d6d-3d6b-5190-a4f0-4ac50b27f4c5
 	dataCategory: Time
@@ -168,9 +168,10 @@ table Date
 		source =
 				let
 				    Source = Sql.Database(SqlServer, SqlDatabase),
-				    View = Source{[Schema = "rpt", Item = "dim_date"]}[Data],
+				    View = Source{[Schema = "rpt", Item = "dim_date_observed"]}[Data],
 				    Columns = Table.SelectColumns(View, {"date_key", "calendar_date", "calendar_year", "quarter_label", "month_number", "month_name", "month_short", "year_month", "month_start", "day_of_month", "day_of_week", "day_name", "day_short", "is_weekend", "iso_week", "week_start", "season"})
 				in
 				    Columns
 
 	annotation PBI_ResultType = Table
+

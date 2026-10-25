@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "sales_by_group",
   "position": {
     "x": 800,
@@ -7,7 +7,7 @@
     "z": 8000,
     "height": 460,
     "width": 456,
-    "tabOrder": 7
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "barChart",
@@ -79,7 +79,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 7,
                       "Percent": 0
                     }
                   }
@@ -101,6 +101,24 @@
             }
           }
         }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -117,7 +135,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Sales by category group'"
+                  "Value": "'Sales by Category Group'"
                 }
               }
             }

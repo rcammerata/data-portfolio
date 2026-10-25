@@ -41,3 +41,4 @@ table Vendor
 				    Columns
 
 	annotation PBI_ResultType = Table
+

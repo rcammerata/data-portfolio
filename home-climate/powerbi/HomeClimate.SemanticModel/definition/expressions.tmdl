@@ -9,3 +9,4 @@ expression SqlDatabase = "HomeClimate" meta [IsParameterQuery = true, Type = "Te
 	lineageTag: fc04c390-af0c-506a-886e-09765a4533e7
 
 	annotation PBI_ResultType = Text
+

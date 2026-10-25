@@ -2,85 +2,85 @@
 table Climate
 	lineageTag: 08cdf598-0fb8-58ee-b017-a8322e02fb1c
 
-	/// Average relative humidity in the room (each 5-minute bucket is already time-weighted).
-	measure 'Avg indoor humidity' = AVERAGE ( 'Climate'[Indoor Humidity] )
+	/// Average relative humidity in the home (each 5-minute bucket is already time-weighted).
+	measure 'Average Indoor Humidity' = AVERAGE ( 'Climate'[Indoor Humidity] )
 		formatString: 0.0"%"
 		displayFolder: Humidity
 		lineageTag: c09c13d7-3624-5a17-986f-eabb7e147281
 
 	/// The automation's upper humidity target.
-	measure 'Target max' = AVERAGE ( 'Climate'[Target High] )
+	measure 'Target Max' = AVERAGE ( 'Climate'[Target High] )
 		formatString: 0.0"%"
 		displayFolder: Humidity
 		lineageTag: 5d736fc9-3569-5a2d-81b9-45bd391d8e77
 
 	/// Rolling average over the 7 days ending on each date (blank on days without data).
-	measure 'Indoor humidity, 7-day avg' =
+	measure '7-Day Average Indoor Humidity' =
 			VAR LastDay = MAX ( 'Date'[Date] )
 			RETURN
 			    IF (
-			        NOT ISBLANK ( [Avg indoor humidity] ),
-			        CALCULATE ( [Avg indoor humidity], DATESINPERIOD ( 'Date'[Date], LastDay, -7, DAY ) )
+			        NOT ISBLANK ( [Average Indoor Humidity] ),
+			        CALCULATE ( [Average Indoor Humidity], DATESINPERIOD ( 'Date'[Date], LastDay, -7, DAY ) )
 			    )
 		formatString: 0.0"%"
 		displayFolder: Humidity
 		lineageTag: 6e9c1168-1366-583c-aa1b-f808406ef1cd
 
-	/// Share of measured time the room was at or below the target maximum.
-	measure 'Time at or below target' = DIVIDE ( SUM ( 'Climate'[At or Below Target] ), COUNT ( 'Climate'[At or Below Target] ) )
+	/// Share of measured time the home was at or below the target maximum.
+	measure 'Time at or Below Target' = DIVIDE ( SUM ( 'Climate'[At or Below Target] ), COUNT ( 'Climate'[At or Below Target] ) )
 		formatString: 0.0%
 		displayFolder: Humidity
 		lineageTag: 17ab90d6-d54d-5df8-9348-7c60636b53ea
 
-	measure 'Hours above target' = DIVIDE ( CALCULATE ( COUNTROWS ( 'Climate' ), 'Climate'[At or Below Target] = 0 ) * 5, 60 )
+	measure 'Hours Above Target' = DIVIDE ( CALCULATE ( COUNTROWS ( 'Climate' ), 'Climate'[At or Below Target] = 0 ) * 5, 60 )
 		formatString: #,##0.0
 		displayFolder: Humidity
 		lineageTag: 6f86a768-ec7b-5199-8f77-4f993e89c36b
 
-	measure 'Avg indoor temp' = AVERAGE ( 'Climate'[Indoor Temp (F)] )
+	measure 'Average Indoor Temperature' = AVERAGE ( 'Climate'[Indoor Temp (F)] )
 		formatString: 0.0"°F"
 		displayFolder: Weather
 		lineageTag: 80987d83-4a30-5f33-afad-5143fdd28770
 
-	measure 'Avg outdoor temp' = AVERAGE ( 'Climate'[Outdoor Temp (F)] )
+	measure 'Average Outdoor Temperature' = AVERAGE ( 'Climate'[Outdoor Temp (F)] )
 		formatString: 0.0"°F"
 		displayFolder: Weather
 		lineageTag: b8020b04-19bf-5680-983f-87f082c9c6b2
 
 	/// Moisture in the outdoor air; the automation uses it to pick Max, Min or Off.
-	measure 'Avg outdoor absolute humidity' = AVERAGE ( 'Climate'[Outdoor Abs Humidity] )
+	measure 'Average Outdoor Absolute Humidity' = AVERAGE ( 'Climate'[Outdoor Abs Humidity] )
 		formatString: 0.0" g/m³"
 		displayFolder: Weather
 		lineageTag: 942a2472-d71e-57c2-a1c5-422aa5e8a259
 
-	measure 'Runtime hours' = DIVIDE ( SUM ( 'Climate'[Minutes On] ), 60 )
+	measure 'Runtime Hours' = DIVIDE ( SUM ( 'Climate'[Minutes On] ), 60 )
 		formatString: #,##0.0
 		displayFolder: Dehumidifier
 		lineageTag: 226bbd67-952e-5226-97d5-9ba306ad9bee
 
-	measure 'Runtime minutes' = SUM ( 'Climate'[Minutes On] )
+	measure 'Runtime Minutes' = SUM ( 'Climate'[Minutes On] )
 		formatString: #,##0
 		displayFolder: Dehumidifier
 		lineageTag: e2835f7e-862e-519e-b827-d9ab911f5bac
 
-	measure 'Runtime hours per day' = DIVIDE ( [Runtime hours], DISTINCTCOUNT ( 'Climate'[Date] ) )
+	measure 'Runtime Hours per Day' = DIVIDE ( [Runtime Hours], DISTINCTCOUNT ( 'Climate'[Date] ) )
 		formatString: #,##0.0
 		displayFolder: Dehumidifier
 		lineageTag: 193aea5b-73be-5cc4-8395-8b3755cecb69
 
 	/// Runtime x the assumed power draw (a setting in the database); an estimate, not a meter reading.
-	measure 'Estimated energy (kWh)' = SUM ( 'Climate'[Est kWh] )
+	measure 'Estimated Energy (kWh)' = SUM ( 'Climate'[Est kWh] )
 		formatString: #,##0.0
 		displayFolder: Dehumidifier
 		lineageTag: e0061a14-94cf-560b-9f65-c5fb5b828b71
 
 	/// Estimated energy x the average electricity price setting.
-	measure 'Estimated cost' = SUM ( 'Climate'[Est Cost USD] )
+	measure 'Estimated Cost' = SUM ( 'Climate'[Est Cost USD] )
 		formatString: \$#,##0.00
 		displayFolder: Dehumidifier
 		lineageTag: 8c9992dc-57d9-57de-ae15-6713f12a54ca
 
-	measure 'Latest reading' = MAX ( 'Climate'[Time (Local)] )
+	measure 'Latest Reading' = MAX ( 'Climate'[Time (Local)] )
 		formatString: yyyy-mm-dd hh:nn
 		displayFolder: Data
 		lineageTag: 59b87d94-8c33-5d2c-8c5f-57ce7fd37c0d
@@ -269,3 +269,4 @@ table Climate
 				    Columns
 
 	annotation PBI_ResultType = Table
+

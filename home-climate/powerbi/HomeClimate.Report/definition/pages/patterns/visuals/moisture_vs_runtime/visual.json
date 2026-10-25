@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "moisture_vs_runtime",
   "position": {
     "x": 24,
     "y": 416,
     "z": 5000,
     "height": 280,
-    "width": 608.0,
-    "tabOrder": 4
+    "width": 608,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -42,11 +42,12 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Avg outdoor absolute humidity"
+                  "Property": "Average Outdoor Absolute Humidity"
                 }
               },
-              "queryRef": "Climate.Avg outdoor absolute humidity",
-              "nativeQueryRef": "Avg outdoor absolute humidity"
+              "queryRef": "Climate.Average Outdoor Absolute Humidity",
+              "nativeQueryRef": "Average Outdoor Absolute Humidity",
+              "active": true
             }
           ]
         },
@@ -60,11 +61,11 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Runtime hours"
+                  "Property": "Runtime Hours"
                 }
               },
-              "queryRef": "Climate.Runtime hours",
-              "nativeQueryRef": "Runtime hours"
+              "queryRef": "Climate.Runtime Hours",
+              "nativeQueryRef": "Runtime Hours"
             }
           ]
         }
@@ -79,8 +80,26 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 3,
                       "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
                     }
                   }
                 }
@@ -104,7 +123,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Outdoor moisture vs runtime (one dot per day)'"
+                  "Value": "'Outdoor Moisture vs Runtime (One Dot per Day)'"
                 }
               }
             }

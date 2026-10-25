@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "run_list",
   "position": {
     "x": 24,
@@ -7,7 +7,7 @@
     "z": 7000,
     "height": 460,
     "width": 760,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "tableEx",
@@ -163,7 +163,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Runs (newest first)'"
+                  "Value": "'Runs (Newest First)'"
                 }
               }
             }
@@ -185,5 +185,274 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1e32309e34c22b442e38",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Start"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5a403001f3cc2245a87b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "End"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c2ec4eba1a3ae9f52824",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Minutes On"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "73b961ec2bd36951b267",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Decision"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3e1d3c0027c8fa62ba7c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Device Mode"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b9899567553bfc97605b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Humidity at Start"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "72f679da8b9f130c7df5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Humidity at End"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a0315de6a1b33fdfa861",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Humidity Drop"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "563384e2cfa19b694ff7",
+        "type": "Exclude",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dehumidifier Runs",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Start"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "End"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Minutes On"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Decision"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Device Mode"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Humidity at Start"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Humidity at End"
+                          }
+                        },
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Humidity Drop"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "datetime'2026-10-24T17:29:58'"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "60.05D"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "'Off'"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "'continuous'"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "38D"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "37D"
+                            }
+                          },
+                          {
+                            "Literal": {
+                              "Value": "1D"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Exclude"
+      }
+    ]
   }
 }

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "vendor_table",
   "position": {
-    "x": 648.0,
+    "x": 648,
     "y": 116,
     "z": 4000,
     "height": 580,
-    "width": 608.0,
-    "tabOrder": 3
+    "width": 608,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "tableEx",
@@ -65,11 +65,11 @@
                       "Entity": "Sales"
                     }
                   },
-                  "Property": "Vendor share"
+                  "Property": "Vendor Share"
                 }
               },
-              "queryRef": "Sales.Vendor share",
-              "nativeQueryRef": "Vendor share"
+              "queryRef": "Sales.Vendor Share",
+              "nativeQueryRef": "Vendor Share"
             }
           ]
         }
@@ -107,7 +107,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Vendors by sales'"
+                  "Value": "'Vendors by Sales'"
                 }
               }
             }

@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 51.036068882154311,
+            "y": 306.42068695902424
+          },
+          "nodeIndex": "Climate",
+          "nodeLineageTag": "08cdf598-0fb8-58ee-b017-a8322e02fb1c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 337.86406239212465,
+            "y": 307.25209168304832
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "e1053d6d-3d6b-5190-a4f0-4ac50b27f4c5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 496.78033373337132,
+            "y": -50
+          },
+          "nodeIndex": "Dehumidifier Runs",
+          "nodeLineageTag": "701ae342-e464-5791-bb63-6ce36970447d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 627.77591273050712,
+            "y": 515.25928844945065
+          },
+          "nodeIndex": "Events",
+          "nodeLineageTag": "eb5996ea-50b7-5b86-88ad-08aa98200d28",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 28.692813487311014
+          },
+          "nodeIndex": "Time of Day",
+          "nodeLineageTag": "778b5bc4-c973-556f-a65f-12f60248effb",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

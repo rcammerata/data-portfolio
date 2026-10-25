@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "store_table",
   "position": {
     "x": 24,
@@ -7,7 +7,7 @@
     "z": 3000,
     "height": 580,
     "width": 760,
-    "tabOrder": 2
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "tableEx",
@@ -23,11 +23,11 @@
                       "Entity": "Sales"
                     }
                   },
-                  "Property": "Store rank"
+                  "Property": "Store Rank"
                 }
               },
-              "queryRef": "Sales.Store rank",
-              "nativeQueryRef": "Store rank"
+              "queryRef": "Sales.Store Rank",
+              "nativeQueryRef": "Store Rank"
             },
             {
               "field": {
@@ -93,11 +93,11 @@
                       "Entity": "Sales"
                     }
                   },
-                  "Property": "Avg price per bottle"
+                  "Property": "Average Price per Bottle"
                 }
               },
-              "queryRef": "Sales.Avg price per bottle",
-              "nativeQueryRef": "Avg price per bottle"
+              "queryRef": "Sales.Average Price per Bottle",
+              "nativeQueryRef": "Average Price per Bottle"
             }
           ]
         }
@@ -135,7 +135,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Stores by sales'"
+                  "Value": "'Stores by Sales'"
                 }
               }
             }

@@ -11,6 +11,8 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["SqlServer","SqlDatabase","Date","Sales","Store","Item","Vendor","Category","County"]
 
+annotation PBI_ProTooling = ["DevMode"]
+
 ref table Date
 ref table Sales
 ref table Store
@@ -18,3 +20,4 @@ ref table Item
 ref table Vendor
 ref table Category
 ref table County
+

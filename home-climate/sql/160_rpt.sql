@@ -1,4 +1,6 @@
-/* Reporting views: what Power BI imports. Local times, friendly units, one row per bucket. */
+/* Reporting views: what Power BI imports. Local times, friendly units, one row per bucket.
+   The indoor sensor reads low: 'indoor_humidity_offset' (5 points) is added here to it and to the
+   automation's target band (set on the same scale), so the raw tables keep what the sensor sent. */
 
 CREATE VIEW rpt.dim_time
 AS
@@ -33,7 +35,8 @@ cfg AS
     SELECT
         COALESCE(MAX(CASE WHEN s.setting_key = 'time_zone' THEN s.setting_value END), N'UTC') AS time_zone,
         COALESCE(MAX(CASE WHEN s.setting_key = 'dehumidifier_watts' THEN TRY_CONVERT(decimal(9, 2), s.setting_value) END), 380) AS watts,
-        COALESCE(MAX(CASE WHEN s.setting_key = 'electricity_usd_per_kwh' THEN TRY_CONVERT(decimal(9, 4), s.setting_value) END), 0.182) AS usd_per_kwh
+        COALESCE(MAX(CASE WHEN s.setting_key = 'electricity_usd_per_kwh' THEN TRY_CONVERT(decimal(9, 4), s.setting_value) END), 0.182) AS usd_per_kwh,
+        COALESCE(MAX(CASE WHEN s.setting_key = 'indoor_humidity_offset' THEN TRY_CONVERT(decimal(5, 2), s.setting_value) END), 0) AS rh_offset
     FROM dw.setting AS s
 )
 SELECT
@@ -41,14 +44,14 @@ SELECT
     CONVERT(datetime2(0), (k.bucket_start_utc AT TIME ZONE 'UTC') AT TIME ZONE cfg.time_zone) AS bucket_start_local,
     dd.calendar_date,
     k.time_key,
-    CONVERT(decimal(5, 1), r.indoor_humidity) AS indoor_humidity,
+    CONVERT(decimal(5, 1), r.indoor_humidity + cfg.rh_offset) AS indoor_humidity,
     CONVERT(decimal(5, 1), r.indoor_temp_f) AS indoor_temp_f,
     CONVERT(decimal(5, 1), r.outdoor_temp_f) AS outdoor_temp_f,
     CONVERT(decimal(5, 1), r.outdoor_humidity) AS outdoor_humidity,
     CONVERT(decimal(5, 1), r.outdoor_abs_humidity) AS outdoor_abs_humidity,
     CONVERT(decimal(5, 1), r.dehumidifier_humidity) AS dehumidifier_humidity,
-    CONVERT(decimal(5, 1), r.target_low) AS target_low,
-    CONVERT(decimal(5, 1), r.target_high) AS target_high,
+    CONVERT(decimal(5, 1), r.target_low + cfg.rh_offset) AS target_low,
+    CONVERT(decimal(5, 1), r.target_high + cfg.rh_offset) AS target_high,
     CASE
         WHEN r.indoor_humidity IS NULL OR r.target_high IS NULL THEN NULL
         WHEN r.indoor_humidity <= r.target_high THEN 1
@@ -70,6 +73,8 @@ JOIN dw.dim_date AS dd ON dd.date_key = k.date_key
 CROSS JOIN cfg;
 GO
 
+/* Finished runs only: a run without an end (still going, or cut off by missing data) would
+   distort the averages. */
 CREATE VIEW rpt.fact_dehumidifier_session
 AS
 SELECT
@@ -79,17 +84,19 @@ SELECT
     s.minutes_on,
     s.device_mode,
     s.decision_mode,
-    s.humidity_start,
-    s.humidity_end,
+    CONVERT(decimal(5, 1), s.humidity_start + cfg.rh_offset) AS humidity_start,
+    CONVERT(decimal(5, 1), s.humidity_end + cfg.rh_offset) AS humidity_end,
     CONVERT(decimal(5, 1), s.humidity_start - s.humidity_end) AS humidity_drop,
     s.is_complete
 FROM dw.fact_dehumidifier_session AS s
 JOIN dw.dim_date AS dd ON dd.date_key = s.start_date_key
 CROSS JOIN (
-    SELECT COALESCE(MAX(setting_value), N'UTC') AS time_zone
+    SELECT
+        COALESCE(MAX(CASE WHEN setting_key = 'time_zone' THEN setting_value END), N'UTC') AS time_zone,
+        COALESCE(MAX(CASE WHEN setting_key = 'indoor_humidity_offset' THEN TRY_CONVERT(decimal(5, 2), setting_value) END), 0) AS rh_offset
     FROM dw.setting
-    WHERE setting_key = 'time_zone'
-) AS cfg;
+) AS cfg
+WHERE s.session_end_utc IS NOT NULL;
 GO
 
 CREATE VIEW rpt.fact_event
@@ -98,11 +105,12 @@ SELECT
     CONVERT(datetime2(0), (e.event_utc AT TIME ZONE 'UTC') AT TIME ZONE cfg.time_zone) AS event_local,
     dd.calendar_date,
     CASE e.event_type
-        WHEN 'bucket_full' THEN 'Bucket full'
-        WHEN 'too_hot' THEN 'Too hot'
-        WHEN 'mode_change' THEN 'Mode change'
-        WHEN 'auto_on' THEN 'Automation on'
-        WHEN 'auto_off' THEN 'Automation off'
+        -- the Cube drains through its pump hose: its "bucket full" sensor marks the pump emptying it
+        WHEN 'bucket_full' THEN 'Bucket Emptied (Pump)'
+        WHEN 'too_hot' THEN 'Too Hot'
+        WHEN 'mode_change' THEN 'Mode Change'
+        WHEN 'auto_on' THEN 'Automation On'
+        WHEN 'auto_off' THEN 'Automation Off'
         ELSE e.event_type
     END AS event_name,
     e.detail
@@ -154,10 +162,28 @@ SELECT
     (SELECT COUNT(*)
      FROM dw.fact_dehumidifier_session AS s
      JOIN dw.dim_date AS x ON x.date_key = s.start_date_key
-     WHERE x.calendar_date = d.calendar_date) AS dehumidifier_runs,
+     WHERE x.calendar_date = d.calendar_date AND s.session_end_utc IS NOT NULL) AS dehumidifier_runs,
     (SELECT COUNT(*)
      FROM dw.fact_event AS e
      JOIN dw.dim_date AS x ON x.date_key = e.date_key
      WHERE x.calendar_date = d.calendar_date AND e.event_type = 'bucket_full') AS bucket_full_events
 FROM daily AS d;
+GO
+
+/* The report's calendar: from the first day with readings through today, so the date range box
+   always matches the data (rpt.dim_date has whole years, for the sales report's year-over-year). */
+CREATE VIEW rpt.dim_date_observed
+AS
+SELECT
+    d.date_key, d.calendar_date, d.calendar_year, d.quarter_label, d.month_number, d.month_name,
+    d.month_short, d.year_month, d.month_start, d.day_of_month, d.day_of_week, d.day_name, d.day_short,
+    d.is_weekend, d.iso_week, d.week_start, d.season
+FROM rpt.dim_date AS d
+CROSS JOIN (
+    SELECT
+        (SELECT MIN(bucket_start_utc) FROM dw.fact_reading_5min) AS first_utc,
+        (SELECT COALESCE(MAX(setting_value), N'UTC') FROM dw.setting WHERE setting_key = 'time_zone') AS time_zone
+) AS b
+WHERE d.calendar_date >= CONVERT(date, (b.first_utc AT TIME ZONE 'UTC') AT TIME ZONE b.time_zone)
+  AND d.calendar_date <= CONVERT(date, (SYSUTCDATETIME() AT TIME ZONE 'UTC') AT TIME ZONE b.time_zone);
 GO

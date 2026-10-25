@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "county_per_resident",
   "position": {
     "x": 800,
@@ -7,7 +7,7 @@
     "z": 4000,
     "height": 580,
     "width": 456,
-    "tabOrder": 3
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "barChart",
@@ -42,11 +42,11 @@
                       "Entity": "Sales"
                     }
                   },
-                  "Property": "Sales per resident"
+                  "Property": "Sales per Resident"
                 }
               },
-              "queryRef": "Sales.Sales per resident",
-              "nativeQueryRef": "Sales per resident"
+              "queryRef": "Sales.Sales per Resident",
+              "nativeQueryRef": "Sales per Resident"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "Sales"
                   }
                 },
-                "Property": "Sales per resident"
+                "Property": "Sales per Resident"
               }
             },
             "direction": "Descending"
@@ -79,8 +79,26 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 7,
                       "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
                     }
                   }
                 }
@@ -104,7 +122,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Sales per resident by county'"
+                  "Value": "'Sales per Resident by County'"
                 }
               }
             }

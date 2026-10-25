@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "runtime_by_day",
   "position": {
     "x": 800,
@@ -7,7 +7,7 @@
     "z": 8000,
     "height": 460,
     "width": 456,
-    "tabOrder": 7
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "columnChart",
@@ -42,11 +42,11 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Runtime hours"
+                  "Property": "Runtime Hours"
                 }
               },
-              "queryRef": "Climate.Runtime hours",
-              "nativeQueryRef": "Runtime hours"
+              "queryRef": "Climate.Runtime Hours",
+              "nativeQueryRef": "Runtime Hours"
             }
           ]
         }
@@ -79,7 +79,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 8,
                       "Percent": 0
                     }
                   }
@@ -87,6 +87,29 @@
               }
             }
           }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {}
         }
       ]
     },
@@ -104,7 +127,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dehumidifier runtime per day (hours)'"
+                  "Value": "'Dehumidifier Runtime per Day (Hours)'"
                 }
               }
             }
@@ -126,5 +149,24 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "240ca910264537c7d1cf",
+        "displayName": "Runtime Hours",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Climate"
+              }
+            },
+            "Property": "Runtime Hours"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

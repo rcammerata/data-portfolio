@@ -2,12 +2,12 @@
 table Events
 	lineageTag: eb5996ea-50b7-5b86-88ad-08aa98200d28
 
-	measure 'Bucket full alerts' = CALCULATE ( COUNTROWS ( 'Events' ), 'Events'[Event] = "Bucket full" )
+	measure 'Bucket Empties (Pump)' = CALCULATE ( COUNTROWS ( 'Events' ), 'Events'[Event] = "Bucket Emptied (Pump)" )
 		formatString: #,##0
 		displayFolder: Dehumidifier
 		lineageTag: bde29669-e6ca-53d5-b7c2-4cbdb6da7552
 
-	measure 'Event count' = COUNTROWS ( 'Events' )
+	measure 'Event Count' = COUNTROWS ( 'Events' )
 		formatString: #,##0
 		displayFolder: Data
 		lineageTag: 34a4aa0e-369f-582f-8604-c41e40f38f37
@@ -60,3 +60,4 @@ table Events
 				    Columns
 
 	annotation PBI_ResultType = Table
+

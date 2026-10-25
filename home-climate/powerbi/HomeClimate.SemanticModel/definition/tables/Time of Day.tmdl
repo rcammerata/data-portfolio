@@ -68,3 +68,4 @@ table 'Time of Day'
 				    Columns
 
 	annotation PBI_ResultType = Table
+

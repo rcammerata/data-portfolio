@@ -9,3 +9,4 @@ expression SqlDatabase = "RetailSales" meta [IsParameterQuery = true, Type = "Te
 	lineageTag: 01adf392-4574-57c4-8f23-0a11d8416728
 
 	annotation PBI_ResultType = Text
+

@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "humidity_by_hour",
   "position": {
     "x": 24,
     "y": 116,
     "z": 3000,
     "height": 284,
-    "width": 608.0,
-    "tabOrder": 2
+    "width": 608,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "lineChart",
@@ -42,11 +42,11 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Avg indoor humidity"
+                  "Property": "Average Indoor Humidity"
                 }
               },
-              "queryRef": "Climate.Avg indoor humidity",
-              "nativeQueryRef": "Avg indoor humidity"
+              "queryRef": "Climate.Average Indoor Humidity",
+              "nativeQueryRef": "Average Indoor Humidity"
             },
             {
               "field": {
@@ -56,11 +56,11 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Target max"
+                  "Property": "Target Max"
                 }
               },
-              "queryRef": "Climate.Target max",
-              "nativeQueryRef": "Target max"
+              "queryRef": "Climate.Target Max",
+              "nativeQueryRef": "Target Max"
             }
           ]
         }
@@ -113,7 +113,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 8,
                       "Percent": 0
                     }
                   }
@@ -122,7 +122,7 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Avg indoor humidity"
+            "metadata": "Climate.Average Indoor Humidity"
           }
         },
         {
@@ -131,8 +131,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#898781'"
+                    "ThemeDataColor": {
+                      "ColorId": 5,
+                      "Percent": 0
                     }
                   }
                 }
@@ -140,7 +141,7 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Target max"
+            "metadata": "Climate.Target Max"
           }
         }
       ],
@@ -163,7 +164,25 @@
             }
           },
           "selector": {
-            "metadata": "Climate.Target max"
+            "metadata": "Climate.Target Max"
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       ]
@@ -182,7 +201,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Indoor humidity by hour of day'"
+                  "Value": "'Indoor Humidity by Hour of Day'"
                 }
               }
             }

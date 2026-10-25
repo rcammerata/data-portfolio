@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "kpi_3_avg_humidity_drop_per_run",
   "position": {
-    "x": 648.0,
+    "x": 648,
     "y": 116,
     "z": 5000,
     "height": 104,
-    "width": 296.0,
-    "tabOrder": 4
+    "width": 296,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Dehumidifier Runs"
                     }
                   },
-                  "Property": "Avg humidity drop per run"
+                  "Property": "Average Humidity Drop per Run"
                 }
               },
-              "queryRef": "Dehumidifier Runs.Avg humidity drop per run",
-              "nativeQueryRef": "Avg humidity drop per run"
+              "queryRef": "Dehumidifier Runs.Average Humidity Drop per Run",
+              "nativeQueryRef": "Average Humidity Drop per Run"
             }
           ]
         }
@@ -49,5 +49,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cc3cc22a3880cd265974",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dehumidifier Runs"
+              }
+            },
+            "Property": "Average Humidity Drop per Run"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

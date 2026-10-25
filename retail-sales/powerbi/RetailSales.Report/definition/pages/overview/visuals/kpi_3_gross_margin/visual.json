@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "kpi_3_gross_margin",
   "position": {
-    "x": 648.0,
+    "x": 648,
     "y": 116,
     "z": 5000,
     "height": 104,
-    "width": 296.0,
-    "tabOrder": 4
+    "width": 296,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Sales"
                     }
                   },
-                  "Property": "Gross margin %"
+                  "Property": "Gross Margin %"
                 }
               },
-              "queryRef": "Sales.Gross margin %",
-              "nativeQueryRef": "Gross margin %"
+              "queryRef": "Sales.Gross Margin %",
+              "nativeQueryRef": "Gross Margin %"
             }
           ]
         }

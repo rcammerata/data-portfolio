@@ -56,7 +56,7 @@ table Item
 		annotation SummarizationSetBy = Automatic
 
 	column 'Last Bottle Retail'
-		dataType: decimal
+		dataType: double
 		formatString: \$#,##0.00
 		lineageTag: 66954489-9e3f-5ca5-9fda-972876cd4b88
 		summarizeBy: none
@@ -75,3 +75,4 @@ table Item
 				    Columns
 
 	annotation PBI_ResultType = Table
+

@@ -8,33 +8,33 @@ table Sales
 		displayFolder: Sales
 		lineageTag: 62bcefe6-b9e4-554a-95d1-2ede99ac0cba
 
-	measure 'Bottles sold' = SUM ( 'Sales'[Bottles] )
+	measure 'Bottles Sold' = SUM ( 'Sales'[Bottles] )
 		formatString: #,##0
 		displayFolder: Sales
 		lineageTag: f8bc5e58-df1f-5085-972f-b15982f23e3a
 
-	measure 'Liters sold' = SUM ( 'Sales'[Liters] )
+	measure 'Liters Sold' = SUM ( 'Sales'[Liters] )
 		formatString: #,##0
 		displayFolder: Sales
 		lineageTag: 20fc6da4-5350-518c-854c-64968b62fa9c
 
 	/// The state's markup: sales minus what the state paid the vendors.
-	measure 'Gross margin' = SUM ( 'Sales'[Gross Margin Dollars] )
+	measure 'Gross Margin' = SUM ( 'Sales'[Gross Margin Dollars] )
 		formatString: \$#,##0
 		displayFolder: Margin
 		lineageTag: 570a8b75-5e5c-570c-945f-d6d4df6296f0
 
-	measure 'Gross margin %' = DIVIDE ( [Gross margin], [Sales] )
+	measure 'Gross Margin %' = DIVIDE ( [Gross Margin], [Sales] )
 		formatString: 0.0%
 		displayFolder: Margin
 		lineageTag: e8c16321-6cb7-5091-892f-1fc8db1ac971
 
-	measure 'Avg price per liter' = DIVIDE ( [Sales], [Liters sold] )
+	measure 'Average Price per Liter' = DIVIDE ( [Sales], [Liters Sold] )
 		formatString: \$#,##0.00
 		displayFolder: Sales
 		lineageTag: 6e60e082-8d44-551b-87bf-5f0b1d97116c
 
-	measure 'Avg price per bottle' = DIVIDE ( [Sales], [Bottles sold] )
+	measure 'Average Price per Bottle' = DIVIDE ( [Sales], [Bottles Sold] )
 		formatString: \$#,##0.00
 		displayFolder: Sales
 		lineageTag: 963b254e-5261-5e77-bcbb-52075a528110
@@ -68,28 +68,28 @@ table Sales
 		displayFolder: Time intelligence
 		lineageTag: b89bb8de-dfac-5745-9e2f-3d25e38872e7
 
-	measure 'Category share' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( 'Category' ) ) )
+	measure 'Category Share' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( 'Category' ) ) )
 		formatString: 0.0%
 		displayFolder: Share
 		lineageTag: 069ffa8b-c35d-5622-8528-c08aafb4a08a
 
-	measure 'Vendor share' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( 'Vendor' ) ) )
+	measure 'Vendor Share' = DIVIDE ( [Sales], CALCULATE ( [Sales], REMOVEFILTERS ( 'Vendor' ) ) )
 		formatString: 0.0%
 		displayFolder: Share
 		lineageTag: d14d1093-a849-57c4-8936-4180808f16ef
 
-	measure 'Active stores' = DISTINCTCOUNT ( 'Sales'[Store Key] )
+	measure 'Active Stores' = DISTINCTCOUNT ( 'Sales'[Store Key] )
 		formatString: #,##0
 		displayFolder: Stores
 		lineageTag: fd7a96b1-2d58-5cbc-aba0-1d10c8ecb9d0
 
-	measure 'Sales per store' = DIVIDE ( [Sales], [Active stores] )
+	measure 'Sales per Store' = DIVIDE ( [Sales], [Active Stores] )
 		formatString: \$#,##0
 		displayFolder: Stores
 		lineageTag: fcc8ed27-090b-5a7b-83f8-24018f01e1c7
 
 	/// Rank by sales among the stores in the current selection (ALLSELECTED over the whole store table, so it works whichever store columns a visual shows).
-	measure 'Store rank' =
+	measure 'Store Rank' =
 			IF (
 			    HASONEVALUE ( 'Store'[Store Number] ),
 			    RANKX ( ALLSELECTED ( 'Store' ), [Sales] )
@@ -99,17 +99,17 @@ table Sales
 		lineageTag: 4ad35aad-e8e2-5e27-92e0-8ef7aca5b98b
 
 	/// Sales divided by the latest county population (another state dataset).
-	measure 'Sales per resident' = DIVIDE ( [Sales], SUM ( 'County'[Population] ) )
+	measure 'Sales per Resident' = DIVIDE ( [Sales], SUM ( 'County'[Population] ) )
 		formatString: \$#,##0.00
 		displayFolder: Stores
 		lineageTag: 63cbfba2-a5d5-54d3-8a16-f5f967032e00
 
-	measure 'Latest sale date' = MAX ( 'Sales'[Date] )
+	measure 'Latest Sale Date' = MAX ( 'Sales'[Date] )
 		formatString: yyyy-mm-dd
 		displayFolder: Data
 		lineageTag: 119c703f-a3fe-5cb3-af55-a0f7167d81d5
 
-	measure 'Sales lines' = COUNTROWS ( 'Sales' )
+	measure 'Sales Lines' = COUNTROWS ( 'Sales' )
 		formatString: #,##0
 		displayFolder: Data
 		lineageTag: f2c17cc7-d6e1-5054-b055-4081ac435a64
@@ -187,41 +187,41 @@ table Sales
 		annotation SummarizationSetBy = Automatic
 
 	column 'Sale Dollars'
-		dataType: decimal
+		dataType: double
 		isHidden
 		formatString: \$#,##0.00
 		lineageTag: d1bbc17c-9438-5061-9735-49a22a86afda
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: sale_dollars
 
 		annotation SummarizationSetBy = Automatic
 
 	column Liters
-		dataType: decimal
+		dataType: double
 		isHidden
 		formatString: #,##0.00
 		lineageTag: 518e8085-1a69-5aed-8dca-858d302c5556
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: volume_liters
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'State Cost'
-		dataType: decimal
+		dataType: double
 		isHidden
 		formatString: \$#,##0.00
 		lineageTag: 1bc6e45c-2207-5cc7-aafc-5ac519494127
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: state_cost_dollars
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Gross Margin Dollars'
-		dataType: decimal
+		dataType: double
 		isHidden
 		formatString: \$#,##0.00
 		lineageTag: a0afc5ec-43aa-583b-8449-fab069dc80e3
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: gross_margin_dollars
 
 		annotation SummarizationSetBy = Automatic
@@ -237,3 +237,4 @@ table Sales
 				    Columns
 
 	annotation PBI_ResultType = Table
+

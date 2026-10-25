@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "runtime_by_decision",
   "position": {
     "x": 800,
@@ -7,7 +7,7 @@
     "z": 8000,
     "height": 200,
     "width": 456,
-    "tabOrder": 7
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "barChart",
@@ -42,11 +42,11 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Runtime hours"
+                  "Property": "Runtime Hours"
                 }
               },
-              "queryRef": "Climate.Runtime hours",
-              "nativeQueryRef": "Runtime hours"
+              "queryRef": "Climate.Runtime Hours",
+              "nativeQueryRef": "Runtime Hours"
             }
           ]
         }
@@ -61,7 +61,7 @@
                     "Entity": "Climate"
                   }
                 },
-                "Property": "Runtime hours"
+                "Property": "Runtime Hours"
               }
             },
             "direction": "Descending"
@@ -79,7 +79,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 8,
                       "Percent": 0
                     }
                   }
@@ -101,6 +101,24 @@
             }
           }
         }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -117,7 +135,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Runtime hours by the automation''s decision'"
+                  "Value": "'Runtime Hours by the Automation''s Decision'"
                 }
               }
             }

@@ -7,14 +7,14 @@ table 'Dehumidifier Runs'
 		displayFolder: Dehumidifier
 		lineageTag: ff69fb82-3828-5146-b4d2-f2b9d192243b
 
-	measure 'Avg run length (min)' = AVERAGE ( 'Dehumidifier Runs'[Minutes On] )
+	measure 'Average Run Length (Minutes)' = AVERAGE ( 'Dehumidifier Runs'[Minutes On] )
 		formatString: #,##0
 		displayFolder: Dehumidifier
 		lineageTag: 215d7078-f87a-5f14-bb92-e443a28fc0df
 
 	/// Percentage points of relative humidity removed per run.
-	measure 'Avg humidity drop per run' = AVERAGE ( 'Dehumidifier Runs'[Humidity Drop] )
-		formatString: 0.0" pts"
+	measure 'Average Humidity Drop per Run' = AVERAGE ( 'Dehumidifier Runs'[Humidity Drop] )
+		formatString: 0.0"%"
 		displayFolder: Dehumidifier
 		lineageTag: c4f42ffa-8709-55d5-a155-089bac8735e9
 
@@ -93,7 +93,7 @@ table 'Dehumidifier Runs'
 
 	column 'Humidity Drop'
 		dataType: double
-		formatString: 0.0
+		formatString: 0.0"%"
 		lineageTag: 2aa195b3-370f-5ab5-b717-bf9f76fcae53
 		summarizeBy: none
 		sourceColumn: humidity_drop
@@ -120,3 +120,4 @@ table 'Dehumidifier Runs'
 				    Columns
 
 	annotation PBI_ResultType = Table
+

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "sales_trend",
   "position": {
     "x": 24,
@@ -7,7 +7,7 @@
     "z": 7000,
     "height": 460,
     "width": 760,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "lineChart",
@@ -113,7 +113,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 7,
                       "Percent": 0
                     }
                   }
@@ -131,8 +131,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#898781'"
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
                     }
                   }
                 }
@@ -166,6 +167,24 @@
             "metadata": "Sales.Sales PY"
           }
         }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -182,7 +201,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Monthly sales vs the same month a year earlier'"
+                  "Value": "'Monthly Sales vs the Same Month a Year Earlier'"
                 }
               }
             }

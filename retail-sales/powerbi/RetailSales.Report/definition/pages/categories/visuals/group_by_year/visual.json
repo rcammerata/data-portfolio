@@ -1,18 +1,37 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "group_by_year",
   "position": {
     "x": 24,
     "y": 116,
     "z": 3000,
     "height": 580,
-    "width": 608.0,
-    "tabOrder": 2
+    "width": 608,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "pivotTable",
     "query": {
       "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "queryRef": "Date.Year",
+              "nativeQueryRef": "Year",
+              "active": true
+            }
+          ]
+        },
         "Rows": {
           "projections": [
             {
@@ -43,25 +62,6 @@
               },
               "queryRef": "Category.Category",
               "nativeQueryRef": "Category",
-              "active": true
-            }
-          ]
-        },
-        "Columns": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Date"
-                    }
-                  },
-                  "Property": "Year"
-                }
-              },
-              "queryRef": "Date.Year",
-              "nativeQueryRef": "Year",
               "active": true
             }
           ]
@@ -100,7 +100,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Sales by category group and year (expand a group for its categories)'"
+                  "Value": "'Sales by Category Group and Year (Expand a Group for Its Categories)'"
                 }
               }
             }

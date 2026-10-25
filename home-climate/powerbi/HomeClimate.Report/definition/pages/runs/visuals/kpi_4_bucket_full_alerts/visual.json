@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "kpi_4_bucket_full_alerts",
   "position": {
-    "x": 960.0,
+    "x": 960,
     "y": 116,
     "z": 6000,
     "height": 104,
-    "width": 296.0,
-    "tabOrder": 5
+    "width": 296,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Events"
                     }
                   },
-                  "Property": "Bucket full alerts"
+                  "Property": "Bucket Empties (Pump)"
                 }
               },
-              "queryRef": "Events.Bucket full alerts",
-              "nativeQueryRef": "Bucket full alerts"
+              "queryRef": "Events.Bucket Empties (Pump)",
+              "nativeQueryRef": "Bucket Empties (Pump)"
             }
           ]
         }

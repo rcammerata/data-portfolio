@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "runtime_by_hour",
   "position": {
-    "x": 648.0,
+    "x": 648,
     "y": 116,
     "z": 4000,
     "height": 284,
-    "width": 608.0,
-    "tabOrder": 3
+    "width": 608,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "columnChart",
@@ -42,11 +42,11 @@
                       "Entity": "Climate"
                     }
                   },
-                  "Property": "Runtime minutes"
+                  "Property": "Runtime Minutes"
                 }
               },
-              "queryRef": "Climate.Runtime minutes",
-              "nativeQueryRef": "Runtime minutes"
+              "queryRef": "Climate.Runtime Minutes",
+              "nativeQueryRef": "Runtime Minutes"
             }
           ]
         }
@@ -79,8 +79,26 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 8,
                       "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "gridlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.5
                     }
                   }
                 }
@@ -104,7 +122,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dehumidifier minutes by hour of day'"
+                  "Value": "'Dehumidifier Minutes by Hour of Day'"
                 }
               }
             }
@@ -126,5 +144,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "30f19fdcafdf2f56a68a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Time of Day"
+              }
+            },
+            "Property": "Hour"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "07aef65b47a2de364968",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Climate"
+              }
+            },
+            "Property": "Runtime Minutes"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
