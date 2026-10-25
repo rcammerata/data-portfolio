@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Indoor humidity vs target, last 90 days (%)" class="chart">
-<style>.chart{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}.chart-title{font-size:15px;font-weight:600;fill:#0b0b0b}.axis,.legend{font-size:11px;fill:#52514e}.value{font-size:11px;fill:#0b0b0b;font-weight:600}.grid{stroke:#e1e0d9;stroke-width:1}.baseline{stroke:#c3c2b7;stroke-width:1}.line{stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.ref{stroke:#898781}.dot{stroke:#fcfcfb;stroke-width:2}.hit{fill:transparent}.s1{stroke:#2a78d6}.f1{fill:#2a78d6}.s2{stroke:#eb6834}.f2{fill:#eb6834}.s3{stroke:#1baf7a}.f3{fill:#1baf7a}.s4{stroke:#eda100}.f4{fill:#eda100}.s5{stroke:#e87ba4}.f5{fill:#e87ba4}.s6{stroke:#008300}.f6{fill:#008300}.s7{stroke:#6250d6}.f7{fill:#6250d6}.s8{stroke:#e34948}.f8{fill:#e34948}</style><rect width="760" height="300" rx="8" fill="#fcfcfb"/><title>Indoor humidity vs target, last 90 days (%)</title>
-<text x="56" y="20" class="chart-title">Indoor humidity vs target, last 90 days (%)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Indoor Humidity vs Target, Last 90 Days (%)" class="chart">
+<style>.chart{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}.chart-title{font-size:15px;font-weight:600;fill:#0b0b0b}.axis,.legend{font-size:11px;fill:#52514e}.value{font-size:11px;fill:#0b0b0b;font-weight:600}.grid{stroke:#e1e0d9;stroke-width:1}.baseline{stroke:#c3c2b7;stroke-width:1}.line{stroke-width:2;stroke-linejoin:round;stroke-linecap:round}.ref{stroke:#898781}.dot{stroke:#fcfcfb;stroke-width:2}.hit{fill:transparent}.s1{stroke:#2a78d6}.f1{fill:#2a78d6}.s2{stroke:#eb6834}.f2{fill:#eb6834}.s3{stroke:#1baf7a}.f3{fill:#1baf7a}.s4{stroke:#eda100}.f4{fill:#eda100}.s5{stroke:#e87ba4}.f5{fill:#e87ba4}.s6{stroke:#008300}.f6{fill:#008300}.s7{stroke:#6250d6}.f7{fill:#6250d6}.s8{stroke:#e34948}.f8{fill:#e34948}</style><rect width="760" height="300" rx="8" fill="#fcfcfb"/><title>Indoor Humidity vs Target, Last 90 Days (%)</title>
+<text x="56" y="20" class="chart-title">Indoor Humidity vs Target, Last 90 Days (%)</text>
 <line x1="56" x2="74" y1="36" y2="36" class="s1" stroke-width="2"/>
-<text x="80" y="40" class="legend">Indoor humidity</text>
+<text x="80" y="40" class="legend">Indoor Humidity</text>
 <line x1="193.5" x2="211.5" y1="36" y2="36" class="ref" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="217.5" y="40" class="legend">Target maximum</text>
+<text x="217.5" y="40" class="legend">Target Maximum</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="grid"/>
 <text x="48" y="264.0" class="axis" text-anchor="end">44.5</text>
 <line x1="56" x2="704" y1="218.8" y2="218.8" class="grid"/>

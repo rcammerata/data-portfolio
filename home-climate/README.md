@@ -1,10 +1,10 @@
-# Home climate analytics
+# Home Climate Analytics
 
-**Question:** a home-automation rule turns a dehumidifier to Max, Min or Off based on a room
-sensor and how much moisture the outside air holds. Does it keep the room inside its target, and
+**Question:** a home-automation rule turns a dehumidifier to Max, Min or Off based on an indoor
+sensor and how much moisture the outside air holds. Does it keep the home inside its target, and
 what does running it cost?
 
-![Indoor humidity vs target](../docs/charts/climate-humidity.svg)
+![Indoor Humidity vs Target](../docs/charts/climate-humidity.svg)
 
 **Last 1 days:** average indoor humidity 46.5%, at or below
 the target 43% of the time, 10 hours of dehumidifier
@@ -14,15 +14,15 @@ runtime. Live charts: https://rcammerata.github.io/data-portfolio/climate.html
 
 | Source | What | How often |
 |---|---|---|
-| Room sensor (SwitchBot) | temperature, relative humidity | every 10 minutes |
+| Indoor Sensor (SwitchBot) | temperature, relative humidity | every 10 minutes |
 | Dehumidifier (Midea) | on/off, mode, its own humidity reading | on every change |
-| Weather forecast (Met.no) | outdoor temperature and humidity | hourly |
-| The automation | its decision (Max / Min / Off), the target band | on every change |
+| Weather Forecast (Met.no) | outdoor temperature and humidity | hourly |
+| The Automation | its decision (Max / Min / Off), the target band | on every change |
 
 Home Assistant records every state change; a Python loader pulls them from its REST API every
 15 minutes. Public summaries are hourly, rounded, and three days behind.
 
-## Pipeline and model
+## Pipeline and Model
 
 ```mermaid
 erDiagram
@@ -42,10 +42,11 @@ erDiagram
     the overlap), instead of a plain average of whatever samples arrived;
   * **gaps and islands** to turn on/off changes into dehumidifier runs (the difference of two
     `ROW_NUMBER`s labels each stretch);
-  * **events** (bucket full, too hot, mode changes) from `LAG` over each sensor;
+  * **events** (the pump emptying the bucket, too hot, mode changes) from `LAG` over each sensor;
   * local time with `AT TIME ZONE`, so a daylight-saving change can't break the day boundaries.
-* `rpt.*` views pivot the facts for Power BI (conditional aggregation), and add the estimated
-  energy use and cost. `rpt.daily_climate` adds a 7-day rolling average (window function).
+* `rpt.*` views pivot the facts for Power BI (conditional aggregation), apply the sensor's
+  calibration, and add the estimated energy use and cost. `rpt.daily_climate` adds a 7-day
+  rolling average (window function). Only finished runs are reported.
 
 Files: [`sql/`](sql/) in deployment order, the loader in [`etl/`](etl/).
 
@@ -59,4 +60,7 @@ cost, and average humidity by hour of day and by outdoor moisture.
 
 * Energy and cost are estimates: runtime × an assumed power draw × an average electricity price
   (both are settings in `dw.setting`).
+* The indoor sensor reads about 5 points low: the reports add 5 to its humidity and to the target
+  band set on the same scale (`indoor_humidity_offset` in `dw.setting`); the raw tables keep what
+  the sensor sent.
 * Sensor gaps are left as gaps; a value is never carried forward for more than 12 hours.

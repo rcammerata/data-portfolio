@@ -1,10 +1,10 @@
-# Retail sales analytics
+# Retail Sales Analytics
 
 **Question:** in Iowa's liquor market, which categories are growing, which vendors lead, and
 which stores and counties sell the most? The State of Iowa is the wholesaler for spirits and
 publishes every sale to licensed stores.
 
-![Monthly sales by category group](../docs/charts/retail-monthly.svg)
+![Monthly Sales by Category Group](../docs/charts/retail-monthly.svg)
 
 **Last 12 months:** {{retail_sales_12m}} in sales (-20.1% vs the 12 months before),
 from 11,128,561 sales lines loaded (2023-01 to 2026-09). Live charts:

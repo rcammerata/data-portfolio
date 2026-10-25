@@ -1,4 +1,4 @@
-# Data analysis portfolio
+# Data Analysis Portfolio
 
 **rcammerata** · live page: https://rcammerata.github.io/data-portfolio/
 
@@ -8,18 +8,18 @@ top. Both refresh themselves on a schedule.
 
 | Project | Question | Data | Highlights |
 |---|---|---|---|
-| [Home climate analytics](home-climate/) | Does a home automation keep a room dry, and what does it cost? | My own sensors and dehumidifier, every 5 minutes | time-weighted averages, gaps and islands, JSON in T-SQL, DAX |
-| [Retail sales analytics](retail-sales/) | Which liquor categories, vendors and stores drive sales in Iowa? | 11,128,561 real sales lines from the State of Iowa (2023-01 to 2026-09) | incremental monthly loads, clustered columnstore, data quality checks, time intelligence |
+| [Home Climate Analytics](home-climate/) | Does a home automation keep a home dry, and what does it cost? | My own sensors and dehumidifier, every 5 minutes | time-weighted averages, gaps and islands, JSON in T-SQL, DAX |
+| [Retail Sales Analytics](retail-sales/) | Which liquor categories, vendors and stores drive sales in Iowa? | 11,128,561 real sales lines from the State of Iowa (2023-01 to 2026-09) | incremental monthly loads, clustered columnstore, data quality checks, time intelligence |
 
-## How it runs
+## How It Runs
 
 ```mermaid
 flowchart LR
-    HA[Home Assistant<br/>sensors + dehumidifier] -->|Python loader<br/>every 15 min| SQL
-    IA[data.iowa.gov<br/>open data API] -->|Python loader<br/>monthly| SQL
-    SQL[(SQL Server 2025<br/>raw / stg -> dw star schema)] -->|rpt views<br/>read-only login| PBI[Power BI Desktop]
-    SQL -->|pub views<br/>daily export| GH[GitHub Pages<br/>this portfolio]
-    SQL -->|SQL Agent| JOB[nightly maintenance]
+    HA[Home Assistant<br/>Sensors + Dehumidifier] -->|Python loader<br/>every 15 min| SQL
+    IA[data.iowa.gov<br/>Open Data API] -->|Python loader<br/>monthly| SQL
+    SQL[(SQL Server 2025<br/>raw / stg -> dw Star Schema)] -->|rpt views<br/>read-only login| PBI[Power BI Desktop]
+    SQL -->|pub views<br/>daily export| GH[GitHub Pages<br/>This Portfolio]
+    SQL -->|SQL Agent| JOB[Nightly Maintenance]
 ```
 
 * **Loaders** (Python, standard library only) fetch new data and pass it to stored procedures as
@@ -32,7 +32,7 @@ flowchart LR
 * **Operations**: nightly compressed backups with `CHECKSUM` and `RESTORE VERIFYONLY`, a SQL Server
   Agent job for statistics and columnstore maintenance, and health checks with phone alerts.
 
-## Repository layout
+## Repository Layout
 
 ```
 home-climate/   sql/ (schema, procedures, views)  etl/ (loader)  powerbi/ (Power BI project)
