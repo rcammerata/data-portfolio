@@ -6,20 +6,20 @@
 <line x1="193.5" x2="211.5" y1="36" y2="36" class="ref" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="217.5" y="40" class="legend">Target Maximum</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="grid"/>
-<text x="48" y="264.0" class="axis" text-anchor="end">44.5</text>
-<line x1="56" x2="704" y1="218.8" y2="218.8" class="grid"/>
-<text x="48" y="222.8" class="axis" text-anchor="end">45.0</text>
-<line x1="56" x2="704" y1="177.6" y2="177.6" class="grid"/>
-<text x="48" y="181.6" class="axis" text-anchor="end">45.5</text>
-<line x1="56" x2="704" y1="136.4" y2="136.4" class="grid"/>
-<text x="48" y="140.4" class="axis" text-anchor="end">46.0</text>
-<line x1="56" x2="704" y1="95.2" y2="95.2" class="grid"/>
-<text x="48" y="99.2" class="axis" text-anchor="end">46.5</text>
+<text x="48" y="264.0" class="axis" text-anchor="end">43</text>
+<line x1="56" x2="704" y1="208.5" y2="208.5" class="grid"/>
+<text x="48" y="212.5" class="axis" text-anchor="end">44</text>
+<line x1="56" x2="704" y1="157.0" y2="157.0" class="grid"/>
+<text x="48" y="161.0" class="axis" text-anchor="end">45</text>
+<line x1="56" x2="704" y1="105.5" y2="105.5" class="grid"/>
+<text x="48" y="109.5" class="axis" text-anchor="end">46</text>
 <line x1="56" x2="704" y1="54.0" y2="54.0" class="grid"/>
-<text x="48" y="58.0" class="axis" text-anchor="end">47.0</text>
+<text x="48" y="58.0" class="axis" text-anchor="end">47</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
-<text x="380.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<circle cx="380.0" cy="95.2" r="3" class="f1"/>
-<circle cx="380.0" cy="95.2" r="4" class="f1 dot"/>
-<text x="388.0" y="99.2" class="value">46.5</text>
+<text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
+<text x="704.0" y="278" class="axis" text-anchor="middle">10-21</text>
+<polyline points="56.0,79.8 704.0,234.2" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="234.2" r="4" class="f1 dot"/>
+<text x="712.0" y="238.2" class="value">43.5</text>
+<polyline points="56.0,157.0 704.0,157.0" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>

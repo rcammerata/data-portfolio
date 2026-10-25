@@ -14,8 +14,8 @@
 <h1>Home Climate Analytics</h1>
 <p class="lead">A home-automation rule turns a dehumidifier up, down or off from an indoor sensor and the
 outdoor air's absolute humidity. This project measures how well that works.</p>
-<h2>Last 1 Days</h2>
-<div class="cards"><div class="card"><div class="k">Average Indoor Humidity</div><div class="v">46.5%</div></div><div class="card"><div class="k">Time at or Below Target</div><div class="v">43%</div></div><div class="card"><div class="k">Dehumidifier Runtime</div><div class="v">10 h</div></div><div class="card"><div class="k">Estimated Energy</div><div class="v">4 kWh</div></div></div>
+<h2>Last 2 Days</h2>
+<div class="cards"><div class="card"><div class="k">Average Indoor Humidity</div><div class="v">45.0%</div></div><div class="card"><div class="k">Time at or Below Target</div><div class="v">62%</div></div><div class="card"><div class="k">Dehumidifier Runtime</div><div class="v">28 h</div></div><div class="card"><div class="k">Estimated Energy</div><div class="v">11 kWh</div></div></div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Indoor Humidity vs the Automation&#x27;s Target" class="chart">
 <title>Indoor Humidity vs the Automation&#x27;s Target</title>
 <text x="56" y="20" class="chart-title">Indoor Humidity vs the Automation&#x27;s Target</text>
@@ -26,56 +26,66 @@ outdoor air's absolute humidity. This project measures how well that works.</p>
 <line x1="305.0" x2="323.0" y1="36" y2="36" class="ref" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="329.0" y="40" class="legend">Target Maximum</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="grid"/>
-<text x="48" y="264.0" class="axis" text-anchor="end">44.5</text>
-<line x1="56" x2="704" y1="218.8" y2="218.8" class="grid"/>
-<text x="48" y="222.8" class="axis" text-anchor="end">45.0</text>
-<line x1="56" x2="704" y1="177.6" y2="177.6" class="grid"/>
-<text x="48" y="181.6" class="axis" text-anchor="end">45.5</text>
-<line x1="56" x2="704" y1="136.4" y2="136.4" class="grid"/>
-<text x="48" y="140.4" class="axis" text-anchor="end">46.0</text>
-<line x1="56" x2="704" y1="95.2" y2="95.2" class="grid"/>
-<text x="48" y="99.2" class="axis" text-anchor="end">46.5</text>
+<text x="48" y="264.0" class="axis" text-anchor="end">43</text>
+<line x1="56" x2="704" y1="208.5" y2="208.5" class="grid"/>
+<text x="48" y="212.5" class="axis" text-anchor="end">44</text>
+<line x1="56" x2="704" y1="157.0" y2="157.0" class="grid"/>
+<text x="48" y="161.0" class="axis" text-anchor="end">45</text>
+<line x1="56" x2="704" y1="105.5" y2="105.5" class="grid"/>
+<text x="48" y="109.5" class="axis" text-anchor="end">46</text>
 <line x1="56" x2="704" y1="54.0" y2="54.0" class="grid"/>
-<text x="48" y="58.0" class="axis" text-anchor="end">47.0</text>
+<text x="48" y="58.0" class="axis" text-anchor="end">47</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="14" y="157.0" class="axis" text-anchor="middle" transform="rotate(-90 14 157.0)">% Relative Humidity</text>
-<text x="380.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<circle cx="380.0" cy="95.2" r="3" class="f1"/>
-<circle cx="380.0" cy="95.2" r="4" class="f1 dot"/>
-<text x="388.0" y="99.2" class="value">46.5</text>
-<circle cx="380.0" cy="95.2" r="3" class="f2"/>
-<circle cx="380.0" cy="95.2" r="4" class="f2 dot"/>
-<circle cx="380.0" cy="95.2" r="7" class="hit"><title>10-20 · Daily Average: 46.5</title></circle>
-<circle cx="380.0" cy="95.2" r="7" class="hit"><title>10-20 · 7-Day Average: 46.5</title></circle>
+<text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
+<text x="704.0" y="278" class="axis" text-anchor="middle">10-21</text>
+<polyline points="56.0,79.8 704.0,234.2" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="234.2" r="4" class="f1 dot"/>
+<text x="712.0" y="238.2" class="value">43.5</text>
+<polyline points="56.0,79.8 704.0,157.0" fill="none" class="s2 line"/>
+<circle cx="704.0" cy="157.0" r="4" class="f2 dot"/>
+<polyline points="56.0,157.0 704.0,157.0" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<circle cx="56.0" cy="79.8" r="7" class="hit"><title>10-20 · Daily Average: 46.5</title></circle>
+<circle cx="704.0" cy="234.2" r="7" class="hit"><title>10-21 · Daily Average: 43.5</title></circle>
+<circle cx="56.0" cy="79.8" r="7" class="hit"><title>10-20 · 7-Day Average: 46.5</title></circle>
+<circle cx="704.0" cy="157.0" r="7" class="hit"><title>10-21 · 7-Day Average: 45.0</title></circle>
 </svg>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Dehumidifier Runtime per Day (Hours)" class="chart">
 <title>Dehumidifier Runtime per Day (Hours)</title>
 <text x="56" y="20" class="chart-title">Dehumidifier Runtime per Day (Hours)</text>
 <line x1="56" x2="744" y1="260.0" y2="260.0" class="grid"/>
 <text x="48" y="264.0" class="axis" text-anchor="end">0.0</text>
-<line x1="56" x2="744" y1="184.7" y2="184.7" class="grid"/>
-<text x="48" y="188.7" class="axis" text-anchor="end">5.0</text>
-<line x1="56" x2="744" y1="109.3" y2="109.3" class="grid"/>
-<text x="48" y="113.3" class="axis" text-anchor="end">10.0</text>
+<line x1="56" x2="744" y1="203.5" y2="203.5" class="grid"/>
+<text x="48" y="207.5" class="axis" text-anchor="end">5.0</text>
+<line x1="56" x2="744" y1="147.0" y2="147.0" class="grid"/>
+<text x="48" y="151.0" class="axis" text-anchor="end">10.0</text>
+<line x1="56" x2="744" y1="90.5" y2="90.5" class="grid"/>
+<text x="48" y="94.5" class="axis" text-anchor="end">15.0</text>
 <line x1="56" x2="744" y1="34.0" y2="34.0" class="grid"/>
-<text x="48" y="38.0" class="axis" text-anchor="end">15.0</text>
-<path d="M388.0,260.0V113.0Q388.0,109.0 392.0,109.0H408.0Q412.0,109.0 412.0,113.0V260.0Z" class="f1"><title>10-20: 10.0</title></path>
-<text x="400.0" y="103.0" class="value" text-anchor="middle">10.0</text>
-<text x="400.0" y="278" class="axis" text-anchor="middle">10-20</text>
+<text x="48" y="38.0" class="axis" text-anchor="end">20.0</text>
+<path d="M216.0,260.0V150.8Q216.0,146.8 220.0,146.8H236.0Q240.0,146.8 240.0,150.8V260.0Z" class="f1"><title>10-20: 10.0</title></path>
+<text x="228.0" y="278" class="axis" text-anchor="middle">10-20</text>
+<path d="M560.0,260.0V59.9Q560.0,55.9 564.0,55.9H580.0Q584.0,55.9 584.0,59.9V260.0Z" class="f1"><title>10-21: 18.1</title></path>
+<text x="572.0" y="49.9" class="value" text-anchor="middle">18.1</text>
+<text x="572.0" y="278" class="axis" text-anchor="middle">10-21</text>
 <line x1="56" x2="744" y1="260.0" y2="260.0" class="baseline"/>
 </svg>
-<details><summary>The Last 30 Days as a Table</summary><table><thead><tr><th>Date</th><th>Average Humidity</th><th>Target Max</th><th>At or Below Target</th><th>Runtime (Hours)</th></tr></thead><tbody><tr><td>2026-10-20</td><td class="n">46.5%</td><td class="n">45%</td><td class="n">43%</td><td class="n">10.0</td></tr></tbody></table></details>
+<details><summary>The Last 30 Days as a Table</summary><table><thead><tr><th>Date</th><th>Average Humidity</th><th>Target Max</th><th>At or Below Target</th><th>Runtime (Hours)</th></tr></thead><tbody><tr><td>2026-10-21</td><td class="n">43.5%</td><td class="n">45%</td><td class="n">81%</td><td class="n">18.1</td></tr><tr><td>2026-10-20</td><td class="n">46.5%</td><td class="n">45%</td><td class="n">43%</td><td class="n">10.0</td></tr></tbody></table></details>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-label="Indoor Humidity by Hour of Day (%)" class="chart">
 <title>Indoor Humidity by Hour of Day (%)</title>
 <text x="56" y="20" class="chart-title">Indoor Humidity by Hour of Day (%)</text>
 <line x1="56" x2="744" y1="260.0" y2="260.0" class="grid"/>
 <text x="48" y="264.0" class="axis" text-anchor="end">40</text>
-<line x1="56" x2="744" y1="184.7" y2="184.7" class="grid"/>
-<text x="48" y="188.7" class="axis" text-anchor="end">45</text>
-<line x1="56" x2="744" y1="109.3" y2="109.3" class="grid"/>
-<text x="48" y="113.3" class="axis" text-anchor="end">50</text>
+<line x1="56" x2="744" y1="214.8" y2="214.8" class="grid"/>
+<text x="48" y="218.8" class="axis" text-anchor="end">42</text>
+<line x1="56" x2="744" y1="169.6" y2="169.6" class="grid"/>
+<text x="48" y="173.6" class="axis" text-anchor="end">44</text>
+<line x1="56" x2="744" y1="124.4" y2="124.4" class="grid"/>
+<text x="48" y="128.4" class="axis" text-anchor="end">46</text>
+<line x1="56" x2="744" y1="79.2" y2="79.2" class="grid"/>
+<text x="48" y="83.2" class="axis" text-anchor="end">48</text>
 <line x1="56" x2="744" y1="34.0" y2="34.0" class="grid"/>
-<text x="48" y="38.0" class="axis" text-anchor="end">55</text>
+<text x="48" y="38.0" class="axis" text-anchor="end">50</text>
 <line x1="56" x2="744" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">00</text>
 <text x="145.7" y="278" class="axis" text-anchor="middle">03</text>
@@ -85,20 +95,32 @@ outdoor air's absolute humidity. This project measures how well that works.</p>
 <text x="504.7" y="278" class="axis" text-anchor="middle">15</text>
 <text x="594.4" y="278" class="axis" text-anchor="middle">18</text>
 <text x="684.2" y="278" class="axis" text-anchor="middle">21</text>
-<polyline points="415.0,229.9 444.9,219.3 474.8,125.9 504.7,119.9 534.6,62.6 564.5,56.6 594.4,134.9 624.3,171.1 654.3,204.3 684.2,214.8 714.1,229.9 744.0,208.8" fill="none" class="s1 line"/>
-<circle cx="744.0" cy="208.8" r="4" class="f1 dot"/>
-<circle cx="415.0" cy="229.9" r="7" class="hit"><title>12 · Average Indoor Humidity: 42.0</title></circle>
-<circle cx="444.9" cy="219.3" r="7" class="hit"><title>13 · Average Indoor Humidity: 42.7</title></circle>
-<circle cx="474.8" cy="125.9" r="7" class="hit"><title>14 · Average Indoor Humidity: 48.9</title></circle>
-<circle cx="504.7" cy="119.9" r="7" class="hit"><title>15 · Average Indoor Humidity: 49.3</title></circle>
-<circle cx="534.6" cy="62.6" r="7" class="hit"><title>16 · Average Indoor Humidity: 53.1</title></circle>
-<circle cx="564.5" cy="56.6" r="7" class="hit"><title>17 · Average Indoor Humidity: 53.5</title></circle>
-<circle cx="594.4" cy="134.9" r="7" class="hit"><title>18 · Average Indoor Humidity: 48.3</title></circle>
-<circle cx="624.3" cy="171.1" r="7" class="hit"><title>19 · Average Indoor Humidity: 45.9</title></circle>
-<circle cx="654.3" cy="204.3" r="7" class="hit"><title>20 · Average Indoor Humidity: 43.7</title></circle>
-<circle cx="684.2" cy="214.8" r="7" class="hit"><title>21 · Average Indoor Humidity: 43.0</title></circle>
-<circle cx="714.1" cy="229.9" r="7" class="hit"><title>22 · Average Indoor Humidity: 42.0</title></circle>
-<circle cx="744.0" cy="208.8" r="7" class="hit"><title>23 · Average Indoor Humidity: 43.4</title></circle>
+<polyline points="56.0,147.0 85.9,214.8 115.8,187.7 145.7,147.0 175.7,192.2 205.6,219.3 235.5,149.3 265.4,183.2 295.3,212.5 325.2,144.7 355.1,208.0 385.0,180.9 415.0,148.1 444.9,182.0 474.8,139.1 504.7,101.8 534.6,67.9 564.5,84.8 594.4,144.7 624.3,138.0 654.3,171.9 684.2,195.6 714.1,209.2 744.0,191.1" fill="none" class="s1 line"/>
+<circle cx="744.0" cy="191.1" r="4" class="f1 dot"/>
+<circle cx="56.0" cy="147.0" r="7" class="hit"><title>00 · Average Indoor Humidity: 45.0</title></circle>
+<circle cx="85.9" cy="214.8" r="7" class="hit"><title>01 · Average Indoor Humidity: 42.0</title></circle>
+<circle cx="115.8" cy="187.7" r="7" class="hit"><title>02 · Average Indoor Humidity: 43.2</title></circle>
+<circle cx="145.7" cy="147.0" r="7" class="hit"><title>03 · Average Indoor Humidity: 45.0</title></circle>
+<circle cx="175.7" cy="192.2" r="7" class="hit"><title>04 · Average Indoor Humidity: 43.0</title></circle>
+<circle cx="205.6" cy="219.3" r="7" class="hit"><title>05 · Average Indoor Humidity: 41.8</title></circle>
+<circle cx="235.5" cy="149.3" r="7" class="hit"><title>06 · Average Indoor Humidity: 44.9</title></circle>
+<circle cx="265.4" cy="183.2" r="7" class="hit"><title>07 · Average Indoor Humidity: 43.4</title></circle>
+<circle cx="295.3" cy="212.5" r="7" class="hit"><title>08 · Average Indoor Humidity: 42.1</title></circle>
+<circle cx="325.2" cy="144.7" r="7" class="hit"><title>09 · Average Indoor Humidity: 45.1</title></circle>
+<circle cx="355.1" cy="208.0" r="7" class="hit"><title>10 · Average Indoor Humidity: 42.3</title></circle>
+<circle cx="385.0" cy="180.9" r="7" class="hit"><title>11 · Average Indoor Humidity: 43.5</title></circle>
+<circle cx="415.0" cy="148.1" r="7" class="hit"><title>12 · Average Indoor Humidity: 45.0</title></circle>
+<circle cx="444.9" cy="182.0" r="7" class="hit"><title>13 · Average Indoor Humidity: 43.5</title></circle>
+<circle cx="474.8" cy="139.1" r="7" class="hit"><title>14 · Average Indoor Humidity: 45.3</title></circle>
+<circle cx="504.7" cy="101.8" r="7" class="hit"><title>15 · Average Indoor Humidity: 47.0</title></circle>
+<circle cx="534.6" cy="67.9" r="7" class="hit"><title>16 · Average Indoor Humidity: 48.5</title></circle>
+<circle cx="564.5" cy="84.8" r="7" class="hit"><title>17 · Average Indoor Humidity: 47.8</title></circle>
+<circle cx="594.4" cy="144.7" r="7" class="hit"><title>18 · Average Indoor Humidity: 45.1</title></circle>
+<circle cx="624.3" cy="138.0" r="7" class="hit"><title>19 · Average Indoor Humidity: 45.4</title></circle>
+<circle cx="654.3" cy="171.9" r="7" class="hit"><title>20 · Average Indoor Humidity: 43.9</title></circle>
+<circle cx="684.2" cy="195.6" r="7" class="hit"><title>21 · Average Indoor Humidity: 42.9</title></circle>
+<circle cx="714.1" cy="209.2" r="7" class="hit"><title>22 · Average Indoor Humidity: 42.2</title></circle>
+<circle cx="744.0" cy="191.1" r="7" class="hit"><title>23 · Average Indoor Humidity: 43.0</title></circle>
 </svg>
 <p></p>
 <h2>The Power BI Report</h2>
@@ -113,7 +135,7 @@ outdoor air's absolute humidity. This project measures how well that works.</p>
 <a href="data/climate_hourly.csv">climate_hourly.csv</a></p>
 <p class="note">Energy is estimated from runtime and an assumed power draw, not measured.</p>
 
-<footer>rcammerata · data analysis portfolio · updated October 24, 2026 · no cookies, no tracking</footer>
+<footer>rcammerata · data analysis portfolio · updated October 25, 2026 · no cookies, no tracking</footer>
 </main>
 </body>
 </html>

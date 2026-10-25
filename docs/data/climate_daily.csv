@@ -1,2 +1,3 @@
 calendar_date,avg_indoor_humidity,min_indoor_humidity,max_indoor_humidity,rolling_7_day_indoor_humidity,avg_indoor_temp_f,avg_outdoor_temp_f,avg_outdoor_abs_humidity,avg_target_high,pct_time_at_or_below_target,runtime_hours,est_kwh,dehumidifier_runs,bucket_full_events
 2026-10-20,46.5,41.0,59.0,46.5,73.6,77.3,14.8,45.0,43.0,10.02,3.806,3,1
+2026-10-21,43.5,41.0,49.0,45.0,73.6,74.9,14.5,45.0,81.3,18.06,6.864,7,1
