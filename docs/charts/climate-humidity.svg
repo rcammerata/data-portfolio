@@ -17,9 +17,10 @@
 <text x="48" y="58.0" class="axis" text-anchor="end">47</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<text x="704.0" y="278" class="axis" text-anchor="middle">10-21</text>
-<polyline points="56.0,79.8 704.0,234.2" fill="none" class="s1 line"/>
-<circle cx="704.0" cy="234.2" r="4" class="f1 dot"/>
-<text x="712.0" y="238.2" class="value">43.5</text>
-<polyline points="56.0,157.0 704.0,157.0" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<text x="380.0" y="278" class="axis" text-anchor="middle">10-21</text>
+<text x="704.0" y="278" class="axis" text-anchor="middle">10-22</text>
+<polyline points="56.0,79.8 380.0,234.2 704.0,223.9" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="223.9" r="4" class="f1 dot"/>
+<text x="712.0" y="227.9" class="value">43.7</text>
+<polyline points="56.0,157.0 380.0,157.0 704.0,157.0" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>
