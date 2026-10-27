@@ -44,4 +44,4 @@ The Power BI reports are saved as Power BI Projects (`.pbip`): the semantic mode
 TMDL (tables, relationships, DAX measures) and the report is JSON, so every change is reviewable
 in Git.
 
-*Updated October 26, 2026.*
+*Updated October 27, 2026.*
