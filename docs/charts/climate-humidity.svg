@@ -6,22 +6,21 @@
 <line x1="193.5" x2="211.5" y1="36" y2="36" class="ref" stroke-width="2" stroke-dasharray="6 4"/>
 <text x="217.5" y="40" class="legend">Target Maximum</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="grid"/>
-<text x="48" y="264.0" class="axis" text-anchor="end">43</text>
-<line x1="56" x2="704" y1="208.5" y2="208.5" class="grid"/>
-<text x="48" y="212.5" class="axis" text-anchor="end">44</text>
-<line x1="56" x2="704" y1="157.0" y2="157.0" class="grid"/>
-<text x="48" y="161.0" class="axis" text-anchor="end">45</text>
-<line x1="56" x2="704" y1="105.5" y2="105.5" class="grid"/>
-<text x="48" y="109.5" class="axis" text-anchor="end">46</text>
+<text x="48" y="264.0" class="axis" text-anchor="end">42</text>
+<line x1="56" x2="704" y1="191.3" y2="191.3" class="grid"/>
+<text x="48" y="195.3" class="axis" text-anchor="end">44</text>
+<line x1="56" x2="704" y1="122.7" y2="122.7" class="grid"/>
+<text x="48" y="126.7" class="axis" text-anchor="end">46</text>
 <line x1="56" x2="704" y1="54.0" y2="54.0" class="grid"/>
-<text x="48" y="58.0" class="axis" text-anchor="end">47</text>
+<text x="48" y="58.0" class="axis" text-anchor="end">48</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<text x="272.0" y="278" class="axis" text-anchor="middle">10-21</text>
-<text x="488.0" y="278" class="axis" text-anchor="middle">10-22</text>
-<text x="704.0" y="278" class="axis" text-anchor="middle">10-23</text>
-<polyline points="56.0,79.8 272.0,234.2 488.0,223.9 704.0,244.6" fill="none" class="s1 line"/>
-<circle cx="704.0" cy="244.6" r="4" class="f1 dot"/>
-<text x="712.0" y="248.6" class="value">43.3</text>
-<polyline points="56.0,157.0 272.0,157.0 488.0,157.0 704.0,157.0" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<text x="218.0" y="278" class="axis" text-anchor="middle">10-21</text>
+<text x="380.0" y="278" class="axis" text-anchor="middle">10-22</text>
+<text x="542.0" y="278" class="axis" text-anchor="middle">10-23</text>
+<text x="704.0" y="278" class="axis" text-anchor="middle">10-24</text>
+<polyline points="56.0,105.5 218.0,208.5 380.0,201.6 542.0,215.4 704.0,229.1" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="229.1" r="4" class="f1 dot"/>
+<text x="712.0" y="233.1" class="value">42.9</text>
+<polyline points="56.0,157.0 218.0,157.0 380.0,157.0 542.0,157.0 704.0,157.0" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>
