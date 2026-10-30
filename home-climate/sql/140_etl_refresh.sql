@@ -56,6 +56,8 @@ BEGIN
         ------------------------------------------------------------------ readings
         -- Each numeric value holds from its time until the next state of the same entity
         -- (at most @stale minutes). "unavailable" states end a value without starting one.
+        -- The target band is a setting, not a sensor: it can go days unchanged, so it holds until
+        -- the next state with no @stale limit.
         CREATE TABLE #interval
         (
             metric_key tinyint        NOT NULL,
@@ -68,6 +70,7 @@ BEGIN
         (
             SELECT
                 m.metric_key,
+                m.value_source,
                 s.last_updated AS t0,
                 LEAD(s.last_updated) OVER (PARTITION BY m.metric_key, s.entity_id ORDER BY s.last_updated) AS t_next,
                 CASE m.value_source
@@ -85,7 +88,8 @@ BEGIN
         SELECT
             src.metric_key,
             src.t0,
-            LEAST(COALESCE(src.t_next, @to_utc), DATEADD(minute, @stale, src.t0)),
+            CASE WHEN src.value_source IN ('band_low', 'band_high') THEN COALESCE(src.t_next, @to_utc)
+                 ELSE LEAST(COALESCE(src.t_next, @to_utc), DATEADD(minute, @stale, src.t0)) END,
             CASE WHEN src.unit IN (N'°C', N'C') THEN src.raw_value * 9 / 5 + 32 ELSE src.raw_value END
         FROM src
         WHERE src.raw_value IS NOT NULL;

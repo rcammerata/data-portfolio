@@ -18,6 +18,9 @@ BEGIN
     EXEC etl.usp_default_setting 'indoor_humidity_offset', N'5',
         N'Points added to the indoor sensor and its target band in the reports (the sensor reads about 5 points low).';
 
+    EXEC etl.usp_default_setting 'report_start_local', N'',
+        N'The reports start here (local time, e.g. 2026-10-20T13:00:00): earlier data was incomplete while devices were being added. Empty: from the first reading.';
+
     DECLARE @calendar_from nvarchar(200) = CONVERT(nvarchar(10), DATEFROMPARTS(YEAR(SYSUTCDATETIME()), 1, 1), 23);
     EXEC etl.usp_default_setting 'calendar_from', @calendar_from, N'First day of the Power BI calendar.';
 
