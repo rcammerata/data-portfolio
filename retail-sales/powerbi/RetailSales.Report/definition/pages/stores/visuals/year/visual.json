@@ -110,7 +110,7 @@
             "altText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Date range'"
+                  "Value": "'Date Range'"
                 }
               }
             }

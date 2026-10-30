@@ -2,11 +2,9 @@
   Rebuilds the facts for one time window from the raw state changes. Safe to re-run for any
   window: everything in it is deleted and computed again.
 
-  Techniques worth a look:
-    * time-weighted averages - each reading counts for as long as it stayed the current value,
-      split exactly across 5-minute buckets (GENERATE_SERIES, GREATEST/LEAST, LEAD)
-    * gaps and islands - continuous dehumidifier runs from on/off changes (two ROW_NUMBERs)
-    * change detection - events from LAG over each entity's states
+  - 5-minute buckets: time-weighted averages, each reading counted for as long as it was current
+  - dehumidifier runs: gaps and islands over the on/off changes
+  - events: LAG over each entity's states
 */
 CREATE PROCEDURE etl.usp_refresh_climate
     @from_utc datetime2(0),
