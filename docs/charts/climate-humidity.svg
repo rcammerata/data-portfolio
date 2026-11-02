@@ -17,12 +17,12 @@
 <text x="48" y="58.0" class="axis" text-anchor="end">50</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<text x="218.0" y="278" class="axis" text-anchor="middle">10-22</text>
-<text x="380.0" y="278" class="axis" text-anchor="middle">10-24</text>
-<text x="542.0" y="278" class="axis" text-anchor="middle">10-26</text>
-<text x="704.0" y="278" class="axis" text-anchor="middle">10-28</text>
-<polyline points="56.0,128.7 137.0,221.4 218.0,216.2 299.0,226.5 380.0,236.8 461.0,211.1 542.0,167.3 623.0,131.2 704.0,123.5" fill="none" class="s1 line"/>
-<circle cx="704.0" cy="123.5" r="4" class="f1 dot"/>
-<text x="712.0" y="127.5" class="value">47.3</text>
-<polyline points="56.0,185.3 137.0,182.8 218.0,182.8 299.0,182.8 380.0,182.8 461.0,205.9 542.0,205.9 623.0,180.2 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<text x="200.0" y="278" class="axis" text-anchor="middle">10-22</text>
+<text x="344.0" y="278" class="axis" text-anchor="middle">10-24</text>
+<text x="488.0" y="278" class="axis" text-anchor="middle">10-26</text>
+<text x="632.0" y="278" class="axis" text-anchor="middle">10-28</text>
+<polyline points="56.0,128.7 128.0,221.4 200.0,216.2 272.0,226.5 344.0,236.8 416.0,211.1 488.0,167.3 560.0,131.2 632.0,123.5 704.0,162.2" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="162.2" r="4" class="f1 dot"/>
+<text x="712.0" y="166.2" class="value">45.8</text>
+<polyline points="56.0,185.3 128.0,182.8 200.0,182.8 272.0,182.8 344.0,182.8 416.0,205.9 488.0,205.9 560.0,180.2 632.0,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>
