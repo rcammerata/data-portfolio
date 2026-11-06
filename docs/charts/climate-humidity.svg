@@ -17,14 +17,14 @@
 <text x="48" y="58.0" class="axis" text-anchor="end">50</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<text x="164.0" y="278" class="axis" text-anchor="middle">10-22</text>
-<text x="272.0" y="278" class="axis" text-anchor="middle">10-24</text>
-<text x="380.0" y="278" class="axis" text-anchor="middle">10-26</text>
-<text x="488.0" y="278" class="axis" text-anchor="middle">10-28</text>
-<text x="596.0" y="278" class="axis" text-anchor="middle">10-30</text>
-<text x="704.0" y="278" class="axis" text-anchor="middle">11-01</text>
-<polyline points="56.0,128.7 110.0,221.4 164.0,216.2 218.0,226.5 272.0,236.8 326.0,211.1 380.0,167.3 434.0,131.2 488.0,123.5 542.0,162.2 596.0,195.6 650.0,177.6 704.0,154.4" fill="none" class="s1 line"/>
-<circle cx="704.0" cy="154.4" r="4" class="f1 dot"/>
-<text x="712.0" y="158.4" class="value">46.1</text>
-<polyline points="56.0,185.3 110.0,182.8 164.0,182.8 218.0,182.8 272.0,182.8 326.0,205.9 380.0,205.9 434.0,180.2 488.0,105.5 542.0,105.5 596.0,105.5 650.0,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<text x="155.7" y="278" class="axis" text-anchor="middle">10-22</text>
+<text x="255.4" y="278" class="axis" text-anchor="middle">10-24</text>
+<text x="355.1" y="278" class="axis" text-anchor="middle">10-26</text>
+<text x="454.8" y="278" class="axis" text-anchor="middle">10-28</text>
+<text x="554.5" y="278" class="axis" text-anchor="middle">10-30</text>
+<text x="654.2" y="278" class="axis" text-anchor="middle">11-01</text>
+<polyline points="56.0,128.7 105.8,221.4 155.7,216.2 205.5,226.5 255.4,236.8 305.2,211.1 355.1,167.3 404.9,131.2 454.8,123.5 504.6,162.2 554.5,195.6 604.3,177.6 654.2,154.4 704.0,128.7" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="128.7" r="4" class="f1 dot"/>
+<text x="712.0" y="132.7" class="value">47.1</text>
+<polyline points="56.0,185.3 105.8,182.8 155.7,182.8 205.5,182.8 255.4,182.8 305.2,205.9 355.1,205.9 404.9,180.2 454.8,105.5 504.6,105.5 554.5,105.5 604.3,105.5 654.2,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>
