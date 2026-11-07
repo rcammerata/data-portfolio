@@ -17,14 +17,15 @@
 <text x="48" y="58.0" class="axis" text-anchor="end">50</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<text x="155.7" y="278" class="axis" text-anchor="middle">10-22</text>
-<text x="255.4" y="278" class="axis" text-anchor="middle">10-24</text>
-<text x="355.1" y="278" class="axis" text-anchor="middle">10-26</text>
-<text x="454.8" y="278" class="axis" text-anchor="middle">10-28</text>
-<text x="554.5" y="278" class="axis" text-anchor="middle">10-30</text>
-<text x="654.2" y="278" class="axis" text-anchor="middle">11-01</text>
-<polyline points="56.0,128.7 105.8,221.4 155.7,216.2 205.5,226.5 255.4,236.8 305.2,211.1 355.1,167.3 404.9,131.2 454.8,123.5 504.6,162.2 554.5,195.6 604.3,177.6 654.2,154.4 704.0,128.7" fill="none" class="s1 line"/>
-<circle cx="704.0" cy="128.7" r="4" class="f1 dot"/>
-<text x="712.0" y="132.7" class="value">47.1</text>
-<polyline points="56.0,185.3 105.8,182.8 155.7,182.8 205.5,182.8 255.4,182.8 305.2,205.9 355.1,205.9 404.9,180.2 454.8,105.5 504.6,105.5 554.5,105.5 604.3,105.5 654.2,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<text x="148.6" y="278" class="axis" text-anchor="middle">10-22</text>
+<text x="241.1" y="278" class="axis" text-anchor="middle">10-24</text>
+<text x="333.7" y="278" class="axis" text-anchor="middle">10-26</text>
+<text x="426.3" y="278" class="axis" text-anchor="middle">10-28</text>
+<text x="518.9" y="278" class="axis" text-anchor="middle">10-30</text>
+<text x="611.4" y="278" class="axis" text-anchor="middle">11-01</text>
+<text x="704.0" y="278" class="axis" text-anchor="middle">11-03</text>
+<polyline points="56.0,128.7 102.3,221.4 148.6,216.2 194.9,226.5 241.1,236.8 287.4,211.1 333.7,167.3 380.0,131.2 426.3,123.5 472.6,162.2 518.9,195.6 565.1,177.6 611.4,154.4 657.7,128.7 704.0,175.0" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="175.0" r="4" class="f1 dot"/>
+<text x="712.0" y="179.0" class="value">45.3</text>
+<polyline points="56.0,185.3 102.3,182.8 148.6,182.8 194.9,182.8 241.1,182.8 287.4,205.9 333.7,205.9 380.0,180.2 426.3,105.5 472.6,105.5 518.9,105.5 565.1,105.5 611.4,105.5 657.7,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>
