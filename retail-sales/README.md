@@ -6,8 +6,8 @@ publishes every sale to licensed stores.
 
 ![Monthly Sales by Category Group](../docs/charts/retail-monthly.svg)
 
-**Last 12 months:** {{retail_sales_12m}} in sales (-20.1% vs the 12 months before),
-from 11,128,561 sales lines loaded (2023-01 to 2026-09). Live charts:
+**Last 12 months:** {{retail_sales_12m}} in sales (-29.1% vs the 12 months before),
+from 11,343,469 sales lines loaded (2023-01 to 2026-10). Live charts:
 https://rcammerata.github.io/data-portfolio/retail.html
 
 ## Data
