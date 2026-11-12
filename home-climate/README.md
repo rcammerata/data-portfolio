@@ -6,8 +6,8 @@ what does running it cost?
 
 ![Indoor Humidity vs Target](../docs/charts/climate-humidity.svg)
 
-**Last 19 days:** average indoor humidity 45.3%, at or below
-the target 77% of the time, 392 hours of dehumidifier
+**Last 20 days:** average indoor humidity 45.4%, at or below
+the target 77% of the time, 410 hours of dehumidifier
 runtime. Live charts: https://rcammerata.github.io/data-portfolio/climate.html
 
 ## Data
