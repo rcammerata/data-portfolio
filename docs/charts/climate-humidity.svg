@@ -17,14 +17,15 @@
 <text x="48" y="58.0" class="axis" text-anchor="end">50</text>
 <line x1="56" x2="704" y1="260.0" y2="260.0" class="baseline"/>
 <text x="56.0" y="278" class="axis" text-anchor="middle">10-20</text>
-<text x="153.2" y="278" class="axis" text-anchor="middle">10-23</text>
-<text x="250.4" y="278" class="axis" text-anchor="middle">10-26</text>
-<text x="347.6" y="278" class="axis" text-anchor="middle">10-29</text>
-<text x="444.8" y="278" class="axis" text-anchor="middle">11-01</text>
-<text x="542.0" y="278" class="axis" text-anchor="middle">11-04</text>
-<text x="639.2" y="278" class="axis" text-anchor="middle">11-07</text>
-<polyline points="56.0,128.7 88.4,221.4 120.8,216.2 153.2,226.5 185.6,236.8 218.0,211.1 250.4,167.3 282.8,131.2 315.2,123.5 347.6,162.2 380.0,195.6 412.4,177.6 444.8,154.4 477.2,128.7 509.6,175.0 542.0,154.4 574.4,105.5 606.8,198.2 639.2,187.9 671.6,136.4 704.0,198.2" fill="none" class="s1 line"/>
-<circle cx="704.0" cy="198.2" r="4" class="f1 dot"/>
-<text x="712.0" y="202.2" class="value">44.4</text>
-<polyline points="56.0,185.3 88.4,182.8 120.8,182.8 153.2,182.8 185.6,182.8 218.0,205.9 250.4,205.9 282.8,180.2 315.2,105.5 347.6,105.5 380.0,105.5 412.4,105.5 444.8,105.5 477.2,105.5 509.6,105.5 542.0,105.5 574.4,105.5 606.8,105.5 639.2,105.5 671.6,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
+<text x="148.6" y="278" class="axis" text-anchor="middle">10-23</text>
+<text x="241.1" y="278" class="axis" text-anchor="middle">10-26</text>
+<text x="333.7" y="278" class="axis" text-anchor="middle">10-29</text>
+<text x="426.3" y="278" class="axis" text-anchor="middle">11-01</text>
+<text x="518.9" y="278" class="axis" text-anchor="middle">11-04</text>
+<text x="611.4" y="278" class="axis" text-anchor="middle">11-07</text>
+<text x="704.0" y="278" class="axis" text-anchor="middle">11-10</text>
+<polyline points="56.0,128.7 86.9,221.4 117.7,216.2 148.6,226.5 179.4,236.8 210.3,211.1 241.1,167.3 272.0,131.2 302.9,123.5 333.7,162.2 364.6,195.6 395.4,177.6 426.3,154.4 457.1,128.7 488.0,175.0 518.9,154.4 549.7,105.5 580.6,198.2 611.4,187.9 642.3,136.4 673.1,198.2 704.0,139.0" fill="none" class="s1 line"/>
+<circle cx="704.0" cy="139.0" r="4" class="f1 dot"/>
+<text x="712.0" y="143.0" class="value">46.7</text>
+<polyline points="56.0,185.3 86.9,182.8 117.7,182.8 148.6,182.8 179.4,182.8 210.3,205.9 241.1,205.9 272.0,180.2 302.9,105.5 333.7,105.5 364.6,105.5 395.4,105.5 426.3,105.5 457.1,105.5 488.0,105.5 518.9,105.5 549.7,105.5 580.6,105.5 611.4,105.5 642.3,105.5 673.1,105.5 704.0,105.5" fill="none" class="ref line" stroke-dasharray="6 4"/>
 </svg>
